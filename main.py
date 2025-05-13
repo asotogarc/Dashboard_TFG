@@ -4,6 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
 from collections import Counter
+import requests
 
 # Configuración de la página (sin cambios)
 st.set_page_config(
