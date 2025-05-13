@@ -46,23 +46,36 @@ except Exception as e:
     st.error(f"Error al cargar los datos de {ciudad_seleccionada}: {e}")
     st.stop()
 
+# Limpiar datos de vecindarios
+if "neighbourhood_cleansed" in data.columns:
+    # Convertir a string y eliminar NaN
+    data["neighbourhood_cleansed"] = data["neighbourhood_cleansed"].astype(str).replace("nan", None)
+    neighborhoods_options = [n for n in data["neighbourhood_cleansed"].unique() if n is not None]
+else:
+    st.error("La columna 'neighbourhood_cleansed' no está presente en los datos.")
+    st.stop()
+
 # Sidebar para filtros
 st.sidebar.header("Filtros")
 neighborhoods = st.sidebar.multiselect(
     "Seleccionar vecindarios",
-    options=data["neighbourhood_cleansed"].unique(),
-    default=data["neighbourhood_cleansed"].unique()
+    options=neighborhoods_options,
+    default=neighborhoods_options  # Todos los vecindarios válidos por defecto
 )
+
+# Manejar rango de precios
+price_min = float(data["price"].min()) if not data["price"].empty else 0.0
+price_max = float(data["price"].max()) if not data["price"].empty else 1000.0
 price_range = st.sidebar.slider(
     "Rango de precios (€)",
-    min_value=float(data["price"].min()),
-    max_value=float(data["price"].max()),
-    value=(float(data["price"].min()), float(data["price"].max()))
+    min_value=price_min,
+    max_value=price_max,
+    value=(price_min, price_max)
 )
 
 # Filtrar datos según selecciones
 filtered_data = data[
-    (data["neighbourhood_cleansed"].isin(neighbourhood_cleansed)) &
+    (data["neighbourhood_cleansed"].isin(neighborhoods)) &
     (data["price"] >= price_range[0]) &
     (data["price"] <= price_range[1])
 ]
@@ -108,7 +121,7 @@ elif option == "Precio vs. Puntuación":
         y="price",
         color="room_type",
         title="Precio vs. Puntuación por Tipo de Habitación",
-        hover_data=["neighborhood"],
+        hover_data=["neighbourhood_cleansed"],
         color_discrete_sequence=px.colors.qualitative.Set2
     )
     st.plotly_chart(fig, use_container_width=True)
@@ -116,6 +129,7 @@ elif option == "Precio vs. Puntuación":
 elif option == "Distribución de Precios":
     fig = px.histogram(
         filtered_data,
+K
         x="price",
         title="Distribución de Precios",
         nbins=50,
