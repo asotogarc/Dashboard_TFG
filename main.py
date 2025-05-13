@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+from datetime import datetime
+from collections import Counter
 
 # Configuración de la página
 st.set_page_config(
@@ -74,14 +76,14 @@ st.sidebar.header("Filtros")
 neighborhoods = st.sidebar.multiselect(
     "Seleccionar vecindarios",
     options=neighborhoods_options,
-    default=neighborhoods_options  # Todos los vecindarios válidos por defecto
+    default=neighborhoods_options
 )
 
 # Filtro para room_type
 room_types = st.sidebar.multiselect(
     "Seleccionar tipos de habitación",
     options=room_type_options,
-    default=room_type_options  # Todos los tipos por defecto
+    default=room_type_options
 )
 
 # Manejar rango de precios
@@ -94,21 +96,77 @@ price_range = st.sidebar.slider(
     value=(price_min, price_max)
 )
 
+# Filtro para número mínimo de reseñas
+min_reviews = st.sidebar.slider(
+    "Número mínimo de reseñas",
+    min_value=0,
+    max_value=int(data["number_of_reviews"].max()),
+    value=0
+)
+
+# Filtro para noches mínimas
+min_nights_range = st.sidebar.slider(
+    "Rango de noches mínimas",
+    min_value=int(data["minimum_nights"].min()),
+    max_value=int(data["minimum_nights"].max()),
+    value=(int(data["minimum_nights"].min()), int(data["minimum_nights"].max()))
+)
+
 # Filtrar datos según selecciones
 filtered_data = data[
     (data["neighbourhood_cleansed"].isin(neighborhoods)) &
     (data["price"] >= price_range[0]) &
     (data["price"] <= price_range[1]) &
-    (data["room_type"].isin(room_types))
+    (data["room_type"].isin(room_types)) &
+    (data["number_of_reviews"] >= min_reviews) &
+    (data["minimum_nights"] >= min_nights_range[0]) &
+    (data["minimum_nights"] <= min_nights_range[1])
 ]
+
+# Procesar variables y crear nuevas características
+filtered_data["host_since"] = pd.to_datetime(filtered_data["host_since"])
+filtered_data["host_age_years"] = (datetime.now() - filtered_data["host_since"]).dt.days / 365  # Antigüedad del host
+filtered_data["occupancy_rate"] = (365 - filtered_data["availability_365"]) / 365  # Tasa de ocupación estimada
+filtered_data["price_per_person"] = filtered_data["price"] / filtered_data["accommodates"]  # Precio por persona
+
+# Procesar host_response_rate (convertir de porcentaje a decimal si es necesario)
+if filtered_data["host_response_rate"].dtype == object:
+    filtered_data["host_response_rate"] = filtered_data["host_response_rate"].str.rstrip("%").astype(float) / 100
+
+# Extraer las 10 amenities más comunes
+if "amenities" in filtered_data.columns:
+    all_amenities = [amenity for sublist in filtered_data["amenities"] for amenity in sublist]
+    common_amenities = [item[0] for item in Counter(all_amenities).most_common(10)]
+    for amenity in common_amenities:
+        filtered_data[f"has_{amenity}"] = filtered_data["amenities"].apply(lambda x: amenity in x)
 
 # Sección de visualizaciones interactivas
 st.header(f"Visualizaciones para {ciudad_seleccionada}")
 option = st.selectbox(
     "Selecciona el tipo de visualización:",
-    ["Mapa", "Precios por Vecindario", "Cantidad por Tipo de Habitación", "Distribución de Precios"]
+    [
+        "Mapa",
+        "Precios por Vecindario",
+        "Cantidad por Tipo de Habitación",
+        "Distribución de Precios",
+        "Relación Precio-Puntuación",
+        "Precio por Tipo de Propiedad",
+        "Precios por Número de Dormitorios",
+        "Antigüedad del Host vs Precio",
+        "Frecuencia de Amenities",
+        "Impacto de Wifi en Precio",
+        "Tasa de Respuesta vs Puntuación",
+        "Tiempo de Respuesta vs Comunicación",
+        "Disponibilidad vs Precio",
+        "Capacidad vs Precio por Persona",
+        "Puntuación de Limpieza vs Precio",
+        "Listados del Host vs Precio",
+        "Distribución de Noches Mínimas",
+        "Puntuación de Ubicación vs Precio"
+    ]
 )
 
+# Visualizaciones
 if option == "Mapa":
     fig = px.scatter_mapbox(
         filtered_data,
@@ -148,21 +206,6 @@ elif option == "Cantidad por Tipo de Habitación":
         color_discrete_sequence=px.colors.qualitative.Set2
     )
     st.plotly_chart(fig, use_container_width=True)
-    
-    # Estadísticas descriptivas
-    if not filtered_data.empty:
-        st.subheader("Estadísticas Descriptivas por Tipo de Habitación")
-        for room_type in room_types:
-            room_data = filtered_data[filtered_data["room_type"] == room_type]
-            if not room_data.empty:
-                st.write(f"**{room_type}**")
-                st.write(f"- Número de alojamientos: {len(room_data)}")
-                st.write(f"- Precio promedio: €{room_data['price'].mean():.2f}")
-                st.write(f"- Puntuación promedio: {room_data['review_scores_rating'].mean():.2f}")
-            else:
-                st.write(f"No hay datos para {room_type}")
-    else:
-        st.write("No hay datos para mostrar.")
 
 elif option == "Distribución de Precios":
     fig = px.histogram(
@@ -174,15 +217,172 @@ elif option == "Distribución de Precios":
     )
     st.plotly_chart(fig, use_container_width=True)
 
+elif option == "Relación Precio-Puntuación":
+    fig = px.scatter(
+        filtered_data,
+        x="review_scores_rating",
+        y="price",
+        title="Relación entre Puntuación de Reseñas y Precio",
+        color="room_type",
+        hover_data=["neighbourhood_cleansed"]
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Precio por Tipo de Propiedad":
+    bar_data = filtered_data.groupby("property_type")["price"].mean().reset_index()
+    fig = px.bar(
+        bar_data,
+        x="property_type",
+        y="price",
+        title="Precio Promedio por Tipo de Propiedad",
+        color="property_type"
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Precios por Número de Dormitorios":
+    fig = px.box(
+        filtered_data,
+        x="bedrooms",
+        y="price",
+        title="Distribución de Precios por Número de Dormitorios",
+        color="bedrooms"
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Antigüedad del Host vs Precio":
+    fig = px.scatter(
+        filtered_data,
+        x="host_age_years",
+        y="price",
+        title="Relación entre Antigüedad del Host y Precio",
+        color="room_type",
+        hover_data=["neighbourhood_cleansed"]
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Frecuencia de Amenities":
+    amenity_counts = {amenity: filtered_data[f"has_{amenity}"].sum() for amenity in common_amenities}
+    amenity_df = pd.DataFrame(list(amenity_counts.items()), columns=["amenity", "count"])
+    fig = px.bar(
+        amenity_df,
+        x="amenity",
+        y="count",
+        title="Frecuencia de las 10 Amenities Más Comunes",
+        color="amenity"
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Impacto de Wifi en Precio":
+    wifi_data = filtered_data.groupby("has_Wifi")["price"].mean().reset_index()
+    fig = px.bar(
+        wifi_data,
+        x="has_Wifi",
+        y="price",
+        title="Precio Promedio con y sin Wifi",
+        color="has_Wifi"
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Tasa de Respuesta vs Puntuación":
+    fig = px.scatter(
+        filtered_data,
+        x="host_response_rate",
+        y="review_scores_communication",
+        title="Tasa de Respuesta del Host vs Puntuación de Comunicación",
+        color="room_type",
+        hover_data=["neighbourhood_cleansed"]
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Tiempo de Respuesta vs Comunicación":
+    bar_data = filtered_data.groupby("host_response_time")["review_scores_communication"].mean().reset_index()
+    fig = px.bar(
+        bar_data,
+        x="host_response_time",
+        y="review_scores_communication",
+        title="Puntuación de Comunicación por Tiempo de Respuesta",
+        color="host_response_time"
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Disponibilidad vs Precio":
+    fig = px.scatter(
+        filtered_data,
+        x="availability_365",
+        y="price",
+        title="Relación entre Disponibilidad Anual y Precio",
+        color="room_type",
+        hover_data=["neighbourhood_cleansed"]
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Capacidad vs Precio por Persona":
+    fig = px.scatter(
+        filtered_data,
+        x="accommodates",
+        y="price_per_person",
+        title="Capacidad vs Precio por Persona",
+        color="room_type",
+        hover_data=["neighbourhood_cleansed"]
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Puntuación de Limpieza vs Precio":
+    fig = px.scatter(
+        filtered_data,
+        x="review_scores_cleanliness",
+        y="price",
+        title="Puntuación de Limpieza vs Precio",
+        color="room_type",
+        hover_data=["neighbourhood_cleansed"]
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Listados del Host vs Precio":
+    fig = px.scatter(
+        filtered_data,
+        x="host_total_listings_count",
+        y="price",
+        title="Número Total de Listados del Host vs Precio",
+        color="room_type",
+        hover_data=["neighbourhood_cleansed"]
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Distribución de Noches Mínimas":
+    fig = px.histogram(
+        filtered_data,
+        x="minimum_nights",
+        title="Distribución de Noches Mínimas",
+        nbins=50,
+        color_discrete_sequence=["#FF6F61"]
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Puntuación de Ubicación vs Precio":
+    fig = px.scatter(
+        filtered_data,
+        x="review_scores_location",
+        y="price",
+        title="Puntuación de Ubicación vs Precio",
+        color="room_type",
+        hover_data=["neighbourhood_cleansed"]
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
 # Métricas resumidas
 st.header("Métricas Resumidas")
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
     st.metric("Precio Promedio", f"€{filtered_data['price'].mean():.2f}")
 with col2:
     st.metric("Número de Alojamientos", len(filtered_data))
 with col3:
     st.metric("Puntuación Promedio", f"{filtered_data['review_scores_rating'].mean():.2f}")
+with col4:
+    st.metric("Tasa de Ocupación Promedio", f"{filtered_data['occupancy_rate'].mean():.2%}")
+with col5:
+    st.metric("Antigüedad Promedio del Host (años)", f"{filtered_data['host_age_years'].mean():.2f}")
 
 # Pie de página personalizado
 st.markdown("---")
