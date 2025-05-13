@@ -61,6 +61,14 @@ else:
     st.error("La columna 'neighbourhood_cleansed' no está presente en los datos.")
     st.stop()
 
+# Verificar que la columna 'room_type' existe
+if "room_type" not in data.columns:
+    st.error("La columna 'room_type' no está presente en los datos.")
+    st.stop()
+
+# Crear una lista limpia de tipos de habitación
+room_type_options = [str(room) for room in data["room_type"].unique() if pd.notna(room) and room is not None]
+
 # Sidebar para filtros
 st.sidebar.header("Filtros")
 neighborhoods = st.sidebar.multiselect(
@@ -70,7 +78,6 @@ neighborhoods = st.sidebar.multiselect(
 )
 
 # Filtro para room_type
-room_type_options = data["room_type"].unique()
 room_types = st.sidebar.multiselect(
     "Seleccionar tipos de habitación",
     options=room_type_options,
