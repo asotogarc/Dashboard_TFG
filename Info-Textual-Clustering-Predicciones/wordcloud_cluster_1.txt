@@ -1,0 +1,15 @@
+Archivo gráfico: wordcloud_cluster_1.png
+
+Descripción:
+Nube de palabras que muestra los términos más frecuentes y relevantes en las reseñas del cluster 1, basada en los comentarios preprocesados.
+
+Información adicional:
+  Cluster ID: 1
+  Número máximo de palabras: 100
+  Preprocesamiento: Eliminación de stop words, lematización, y filtrado de términos no alfabéticos
+
+Datos del gráfico:
+  Palabras más frecuentes (top 10):
+    {'good location': 1.0, 'location good': 0.28306264501160094, 'apartment good': 0.23723897911832947, 'clean': 0.20475638051044084, 'good place': 0.18155452436194897, 'apartment': 0.17807424593967516, 'great': 0.16763341067285384, 'room': 0.15603248259860789, 'good stay': 0.15081206496519722, 'host': 0.14617169373549885}
+
+Fecha de generación: 2025-05-13 04:55:43

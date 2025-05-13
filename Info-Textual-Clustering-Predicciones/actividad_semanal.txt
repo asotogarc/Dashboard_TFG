@@ -1,0 +1,20 @@
+Archivo gráfico: actividad_semanal.png
+
+Descripción:
+Gráfico combinado que muestra la actividad y el sentimiento promedio de las reseñas por día de la semana. Las barras indican el número de reseñas, mientras que la línea roja muestra el sentimiento promedio (calculado con VADER).
+
+Información adicional:
+  Período de análisis: Semanal (por día)
+  Método de análisis de sentimiento: VADER
+
+Datos del gráfico:
+         Día  review_id  vader_compound
+0      Lunes       8257        0.776859
+1     Martes       6485        0.783723
+2  Miércoles       6278        0.776271
+3     Jueves       6228        0.773506
+4    Viernes       6607        0.775032
+5     Sábado       6539        0.776225
+6    Domingo       9606        0.764861
+
+Fecha de generación: 2025-05-13 04:55:57

@@ -1,0 +1,20 @@
+Archivo gráfico: optimal_k.png
+
+Descripción:
+Conjunto de tres gráficos que muestran métricas de evaluación para determinar el número óptimo de clusters (K) en el algoritmo K-Means. Incluye Silhouette Score (mayor es mejor), Davies-Bouldin Index (menor es mejor), y Calinski-Harabasz Index (mayor es mejor).
+
+Información adicional:
+  Rango de K evaluado: 2-7
+  Algoritmo de clustering: K-Means
+  Métricas usadas: Silhouette, Davies-Bouldin, Calinski-Harabasz
+
+Datos del gráfico:
+   K  Silhouette  Davies_Bouldin  Calinski_Harabasz
+0  2    0.039761        4.887045        1730.983764
+1  3    0.026070        6.140784        1121.859079
+2  4    0.029547        5.498277        1013.375529
+3  5    0.019581        6.572435         844.386554
+4  6    0.032676        5.012425         793.607398
+5  7    0.033268        4.802391         734.976323
+
+Fecha de generación: 2025-05-13 00:21:43

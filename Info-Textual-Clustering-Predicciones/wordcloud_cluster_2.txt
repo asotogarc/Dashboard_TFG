@@ -1,0 +1,15 @@
+Archivo gráfico: wordcloud_cluster_2.png
+
+Descripción:
+Nube de palabras que muestra los términos más frecuentes y relevantes en las reseñas del cluster 2, basada en los comentarios preprocesados.
+
+Información adicional:
+  Cluster ID: 2
+  Número máximo de palabras: 100
+  Preprocesamiento: Eliminación de stop words, lematización, y filtrado de términos no alfabéticos
+
+Datos del gráfico:
+  Palabras más frecuentes (top 10):
+    {'highly recommend': 1.0, 'good': 0.7748215444516547, 'need': 0.7407527579493836, 'PERSON': 0.6589876703439325, 'room': 0.6443867618429591, 'house': 0.6213497728747567, 'day': 0.6028552887735237, 'thank': 0.5856586632057106, 'flat': 0.5580791693705386, 'people': 0.5399091499026606}
+
+Fecha de generación: 2025-05-13 04:55:46

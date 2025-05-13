@@ -1,0 +1,17 @@
+Archivo gráfico: sentiment_by_cluster.png
+
+Descripción:
+Diagrama de caja que muestra la distribución de las puntuaciones de sentimiento (calculadas con VADER) para cada cluster de reseñas. Permite comparar el rango y la mediana del sentimiento entre clusters.
+
+Información adicional:
+  Número de clusters: 3
+  Método de análisis de sentimiento: VADER
+
+Datos del gráfico:
+           count      mean       std     min     25%     50%     75%     max
+cluster                                                                     
+0         7130.0  0.853238  0.130881 -0.8899  0.7906  0.8977  0.9460  0.9970
+1         3837.0  0.720461  0.207740 -0.7579  0.5267  0.7783  0.8885  0.9948
+2        39033.0  0.765594  0.300997 -0.9835  0.7096  0.8885  0.9524  0.9986
+
+Fecha de generación: 2025-05-13 04:55:42

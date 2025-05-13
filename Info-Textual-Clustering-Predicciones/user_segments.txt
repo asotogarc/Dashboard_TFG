@@ -1,0 +1,19 @@
+Archivo gráfico: user_segments.png
+
+Descripción:
+Gráfico de dispersión que muestra la segmentación de usuarios en un espacio bidimensional reducido mediante PCA. Los puntos representan usuarios, coloreados según su segmento asignado por DBSCAN. Los 'x' negros indican outliers.
+
+Información adicional:
+  Algoritmo de segmentación: DBSCAN
+  Método de reducción dimensional: PCA
+  Características usadas: Número de reseñas, promedio de sentimiento, días activos, longitud promedio de reseñas
+
+Datos del gráfico:
+  Puntos_PCA:
+    [-0.07092686797919463, -1.1417878493215123], [-0.06815669500172385, 0.5391022677286252], [-0.0704487939387309, 0.905892100864392], [-0.06741889802396404, -0.609712417757054], [-0.07327384003209159, 2.355094833941596], [-0.06622735690540214, -0.055203018980803945], [-0.07052650475808625, 1.6546794304818728], [-0.06907616185448931, 1.1921518294637456], [-0.06974252949618076, 0.024591391127412012], [-0.07516735561437135, 2.8162804204245653]... (mostrando solo los primeros 10 de 49812 elementos)
+  Segmentos:
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0... (mostrando solo los primeros 10 de 49812 elementos)
+  Outliers:
+    [38.28918275543462, 1.986136149755915], [-0.10031059043658594, 5.958657763879613], [15.16386123324074, -0.5275985764024211], [60.6074241573846, 0.5378071938164768], [12.687142799188559, 0.6792473576394339], [12.93332464379781, 0.883552811844038], [16.95597064404663, 0.583363140646105], [-0.10427704114127782, 10.278620199820198], [-0.10607314179306188, 10.654114495930612], [12.563051232358145, 0.2791175785601035]... (mostrando solo los primeros 10 de 139 elementos)
+
+Fecha de generación: 2025-05-13 04:55:54
