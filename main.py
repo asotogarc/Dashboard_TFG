@@ -424,7 +424,7 @@ elif option == "Análisis de Clusters":
     st.plotly_chart(fig3, use_container_width=True)
 
 # Métricas resumidas (sin cambios)
-lif option == "Predicción de Precios":
+elif option == "Predicción de Precios":
     st.subheader("Predicción de Precios con Modelo Entrenado")
     st.markdown("""
     Esta sección permite realizar predicciones de precios utilizando el modelo previamente entrenado.
