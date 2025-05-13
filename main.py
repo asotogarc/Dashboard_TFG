@@ -1,310 +1,138 @@
-# Barra lateral para navegación y filtros
-with st.sidebar:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/2560px-Airbnb_Logo_B%C3%A9lo.svg.png", width=200)
-    
-    st.markdown("### Navegación")
-    page = st.radio(
-        "Selecciona una sección:",
-        ["📊 Resumen General", 
-         "💰 Análisis de Precios", 
-         "📍 Análisis Geográfico", 
-         "👥 Segmentación de Usuarios",
-         "📝 Análisis de Reseñas"],
-        index=0
-    )
-    
-    st.markdown("---")
-    
-    st.markdown("### Filtros")
-    st.markdown("Los filtros se aplicarán cuando se carguen los datos.")
-    
-    # Placeholder para filtros futuros
-    st.markdown("#### Ciudad")
-    ciudades_filter = st.multiselect(
-        "Selecciona ciudades:",
-        ["Madrid", "Barcelona", "Valencia", "Sevilla", "Málaga"],
-        default=["Madrid", "Barcelona"]
-    )
-    
-    st.markdown("#### Tipo de Alojamiento")
-    tipo_filter = st.multiselect(
-        "Selecciona tipos:",
-        ["Apartamento entero", "Habitación privada", "Habitación compartida", "Casa entera"],
-        default=["Apartamento entero", "Casa entera"]
-    )
-    
-    st.markdown("#### Rango de Precio")
-    price_range = st.slider(
-        "Precio por noche (€):",
-        0, 500, (50, 200)
-    )
-    
-    st.markdown("#### Calificación")
-    rating_filter = st.slider(
-        "Calificación mínima:",
-        1.0, 5.0, 4.0, 0.1
-    )
-    
-    st.markdown("---")
-    
-    st.markdown("### Acerca del Autor")
-    st.markdown("""
-    **Ángel Soto García**  
-    Grado en Ciencia de datos  
-    Universidad Oberta de Catalunya  
-    2025
-    """)
-
-# Contenido principal
-st.markdown('<h1 class="main-header">Análisis Predictivo de Precios y Segmentación de Usuarios en Airbnb</h1>', unsafe_allow_html=True)
-st.markdown('<h3 style="text-align: center; color: #767676;">Una perspectiva desde la ciencia de datos</h3>', unsafe_allow_html=True)
-
-# Sección de introducción
-st.markdown('<div class="card">', unsafe_allow_html=True)
-st.markdown('<h2 class="sub-header">Introducción</h2>', unsafe_allow_html=True)
-st.markdown("""
-Este dashboard interactivo presenta los resultados del análisis de datos de Airbnb realizado como parte del Trabajo de Fin de Grado en Ciencia de Datos. La investigación se centra en:
-
-1. **Predicción de precios** de alojamientos utilizando modelos de aprendizaje automático.
-2. **Análisis exploratorio** para comprender la estructura del conjunto de datos.
-3. **Análisis de reseñas** mediante procesamiento de lenguaje natural.
-
-Utiliza los filtros en la barra lateral para personalizar la visualización y navega por las diferentes secciones para explorar los resultados del análisis.
-""")
-st.markdown('</div>', unsafe_allow_html=True)
-
-# Dependiendo de la página seleccionada, mostrar diferentes secciones
-if page == "📊 Resumen General":
-    st.markdown('<h2 class="sub-header">Resumen General</h2>', unsafe_allow_html=True)
-    
-    # Métricas principales - Placeholders
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.markdown('<div class="metric-card">', unsafe_allow_html=True)
-        st.metric(label="Total Alojamientos", value="0")
-        st.markdown('</div>', unsafe_allow_html=True)
-    with col2:
-        st.markdown('<div class="metric-card">', unsafe_allow_html=True)
-        st.metric(label="Precio Medio", value="0 €")
-        st.markdown('</div>', unsafe_allow_html=True)
-    with col3:
-        st.markdown('<div class="metric-card">', unsafe_allow_html=True)
-        st.metric(label="Calificación Media", value="0.0")
-        st.markdown('</div>', unsafe_allow_html=True)
-    with col4:
-        st.markdown('<div class="metric-card">', unsafe_allow_html=True)
-        st.metric(label="% Superhosts", value="0%")
-        st.markdown('</div>', unsafe_allow_html=True)
-    
-    # Secciones de análisis rápido
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.markdown('<h3 class="section-header">Distribución de Precios</h3>', unsafe_allow_html=True)
-        st.markdown("*Se mostrará un histograma con la distribución de precios de los alojamientos.*")
-        # Placeholder para gráfico
-        st.image("https://via.placeholder.com/600x400?text=Histograma+de+Precios", use_column_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-    
-    with col2:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.markdown('<h3 class="section-header">Tipos de Alojamiento</h3>', unsafe_allow_html=True)
-        st.markdown("*Se mostrará un gráfico de torta con la distribución de tipos de alojamiento.*")
-        # Placeholder para gráfico
-        st.image("https://via.placeholder.com/600x400?text=Distribución+por+Tipo", use_column_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-    
-    # Características principales
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.markdown('<h3 class="section-header">Características más Valoradas</h3>', unsafe_allow_html=True)
-    st.markdown("*Se mostrará un gráfico de barras con las características más valoradas según las reseñas.*")
-    # Placeholder para gráfico
-    st.image("https://via.placeholder.com/1200x400?text=Características+más+Valoradas", use_column_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-    
-    # KPIs por ciudad
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.markdown('<h3 class="section-header">Comparativa por Ciudades</h3>', unsafe_allow_html=True)
-    st.markdown("*Se mostrará una tabla comparativa con los principales KPIs por ciudad.*")
-    # Placeholder para tabla
-    st.image("https://via.placeholder.com/1200x300?text=Tabla+Comparativa+por+Ciudades", use_column_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-elif page == "💰 Análisis de Precios":
-    st.markdown('<h2 class="sub-header">Análisis de Precios</h2>', unsafe_allow_html=True)
-    st.markdown('<div class="info-box">Esta sección muestra el análisis detallado de los precios y los factores que los influencian.</div>', unsafe_allow_html=True)
-    
-    # Contenido placeholder para la sección de precios
-    st.markdown("*El contenido de la sección de análisis de precios se cargará cuando se implementen los datos.*")
-    
-    # Subsección de modelado predictivo
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.markdown('<h3 class="section-header">Modelado Predictivo de Precios</h3>', unsafe_allow_html=True)
-    st.markdown("*Aquí se mostrarán los resultados del modelo predictivo de precios, incluyendo métricas de rendimiento e importancia de características.*")
-    # Placeholder para gráfico
-    st.image("https://via.placeholder.com/1200x400?text=Importancia+de+Características", use_column_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-elif page == "📍 Análisis Geográfico":
-    st.markdown('<h2 class="sub-header">Análisis Geográfico</h2>', unsafe_allow_html=True)
-    st.markdown('<div class="info-box">Esta sección visualiza la distribución geográfica de los alojamientos y su relación con los precios y calificaciones.</div>', unsafe_allow_html=True)
-    
-    # Contenido placeholder para la sección geográfica
-    st.markdown("*El contenido de la sección de análisis geográfico se cargará cuando se implementen los datos.*")
-    
-    # Placeholder para mapa
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.markdown('<h3 class="section-header">Mapa de Calor de Precios</h3>', unsafe_allow_html=True)
-    st.markdown("*Aquí se mostrará un mapa de calor con la distribución de precios por ubicación.*")
-    # Placeholder para mapa
-    st.image("https://via.placeholder.com/1200x600?text=Mapa+de+Calor", use_column_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-elif page == "👥 Segmentación de Usuarios":
-    st.markdown('<h2 class="sub-header">Segmentación de Usuarios</h2>', unsafe_allow_html=True)
-    st.markdown('<div class="info-box">Esta sección presenta los resultados del análisis de segmentación de usuarios basado en sus preferencias y comportamientos.</div>', unsafe_allow_html=True)
-    
-    # Contenido placeholder para la sección de segmentación
-    st.markdown("*El contenido de la sección de segmentación de usuarios se cargará cuando se implementen los datos.*")
-    
-    # Placeholder para clusters
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.markdown('<h3 class="section-header">Clusters de Usuarios</h3>', unsafe_allow_html=True)
-    st.markdown("*Aquí se mostrará una visualización de los clusters de usuarios identificados.*")
-    # Placeholder para gráfico
-    st.image("https://via.placeholder.com/1200x600?text=Visualización+de+Clusters", use_column_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-else:  # Análisis de Reseñas
-    st.markdown('<h2 class="sub-header">Análisis de Reseñas</h2>', unsafe_allow_html=True)
-    st.markdown('<div class="info-box">Esta sección presenta el análisis de sentimientos y temas extraídos de las reseñas de los usuarios.</div>', unsafe_allow_html=True)
-    
-    # Contenido placeholder para la sección de reseñas
-    st.markdown("*El contenido de la sección de análisis de reseñas se cargará cuando se implementen los datos.*")
-    
-    # Placeholder para análisis de sentimientos
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.markdown('<h3 class="section-header">Análisis de Sentimientos</h3>', unsafe_allow_html=True)
-    st.markdown("*Aquí se mostrará un gráfico con la distribución de sentimientos en las reseñas.*")
-    # Placeholder para gráfico
-    st.image("https://via.placeholder.com/1200x400?text=Análisis+de+Sentimientos", use_column_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-    
-    # Placeholder para nube de palabras
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.markdown('<h3 class="section-header">Términos más Frecuentes</h3>', unsafe_allow_html=True)
-    st.markdown("*Aquí se mostrará una nube de palabras con los términos más frecuentes en las reseñas.*")
-    # Placeholder para nube de palabras
-    st.image("https://via.placeholder.com/1200x600?text=Nube+de+Palabras", use_column_width=True)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-# Pie de página
-st.markdown('<div class="footer">', unsafe_allow_html=True)
-st.markdown("""
-**Análisis Predictivo de Precios y Segmentación de Usuarios en Airbnb**  
-Trabajo Final de Grado | Universitat Oberta de Catalunya | 2025
-""")
-st.markdown('</div>', unsafe_allow_html=True)
 import streamlit as st
 import pandas as pd
-import numpy as np
 import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 # Configuración de la página
 st.set_page_config(
-    page_title="Análisis Airbnb - TFG",
+    page_title="Análisis Predictivo de Precios y Reseñas en Airbnb",
     page_icon="🏠",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Paleta de colores Airbnb
-COLOR_AIRBNB_PRIMARY = "#FF5A5F"       # Rojo Airbnb
-COLOR_AIRBNB_SECONDARY = "#00A699"     # Verde turquesa
-COLOR_AIRBNB_TERTIARY = "#FC642D"      # Naranja
-COLOR_AIRBNB_QUATERNARY = "#484848"    # Gris oscuro
-COLOR_AIRBNB_LIGHT = "#767676"         # Gris claro
+# Título principal
+st.title("Análisis de Datos de Airbnb en España 2024")
 
-# Aplicar estilos CSS personalizados
+# Introducción breve
 st.markdown("""
-<style>
-    .main-header {
-        font-size: 2.5rem;
-        color: #FF5A5F;
-        text-align: center;
-        margin-bottom: 1rem;
-        font-weight: bold;
-    }
-    .sub-header {
-        font-size: 1.8rem;
-        color: #484848;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        font-weight: bold;
-    }
-    .section-header {
-        font-size: 1.5rem;
-        color: #767676;
-        margin-top: 1.5rem;
-        margin-bottom: 0.8rem;
-        font-weight: bold;
-    }
-    .highlight-text {
-        background-color: #F7F7F7;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        border-left: 5px solid #FF5A5F;
-    }
-    .card {
-        background-color: #FFFFFF;
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        margin-bottom: 1rem;
-    }
-    .info-box {
-        background-color: #EDFBFF;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        border: 1px solid #00A699;
-        margin-bottom: 1rem;
-    }
-    .metric-card {
-        background-color: #FFFFFF;
-        padding: 1rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        text-align: center;
-    }
-    .footer {
-        text-align: center;
-        margin-top: 2rem;
-        padding-top: 1rem;
-        border-top: 1px solid #DDDDDD;
-        color: #767676;
-    }
-    /* Personalizaciones adicionales */
-    div.stButton > button {
-        background-color: #FF5A5F;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        padding: 0.5rem 1rem;
-    }
-    div.stButton > button:hover {
-        background-color: #FC642D;
-    }
-    .stSelectbox label, .stSlider label {
-        color: #484848;
-        font-weight: 500;
-    }
-    .stProgress > div > div > div > div {
-        background-color: #00A699;
-    }
-</style>
-""", unsafe_allow_html=True)
+Bienvenido al dashboard interactivo para el análisis de datos de Airbnb en diferentes ciudades de España (2024).  
+Este proyecto, parte de mi TFG, explora:  
+- **Predicción de precios** mediante modelos de aprendizaje automático.  
+- **Análisis de reseñas** usando procesamiento de lenguaje natural.  
+Autor: Ángel Soto García - Grado en Ciencia de Datos - UOC
+""")
+
+# Diccionario de ciudades y URLs de GitHub
+ciudades_urls = {
+    "Barcelona": "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/datasets/inmuebles_barcelona.parquet",
+    "Euskadi": "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/datasets/inmuebles_euskadi.parquet",
+    "Girona": "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/datasets/inmuebles_girona.parquet",
+    "Madrid": "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/datasets/inmuebles_madrid.parquet",
+    "Mallorca": "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/datasets/inmuebles_mallorca.parquet",
+    "Menorca": "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/datasets/inmuebles_menorca.parquet",
+    "Málaga": "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/datasets/inmuebles_málaga.parquet",
+    "Sevilla": "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/datasets/inmuebles_sevilla.parquet",
+    "Valencia": "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/datasets/inmuebles_valencia.parquet"
+}
+
+# Sidebar para selección de ciudad
+st.sidebar.header("Selección de Ciudad")
+ciudad_seleccionada = st.sidebar.selectbox("Selecciona una ciudad:", list(ciudades_urls.keys()))
+
+# Cargar datos de la ciudad seleccionada
+try:
+    data = pd.read_parquet(ciudades_urls[ciudad_seleccionada])
+except Exception as e:
+    st.error(f"Error al cargar los datos de {ciudad_seleccionada}: {e}")
+    st.stop()
+
+# Sidebar para filtros
+st.sidebar.header("Filtros")
+neighborhoods = st.sidebar.multiselect(
+    "Seleccionar vecindarios",
+    options=data["neighborhood"].unique(),
+    default=data["neighborhood"].unique()
+)
+price_range = st.sidebar.slider(
+    "Rango de precios (€)",
+    min_value=float(data["price"].min()),
+    max_value=float(data["price"].max()),
+    value=(float(data["price"].min()), float(data["price"].max()))
+)
+
+# Filtrar datos según selecciones
+filtered_data = data[
+    (data["neighborhood"].isin(neighborhoods)) &
+    (data["price"] >= price_range[0]) &
+    (data["price"] <= price_range[1])
+]
+
+# Sección de visualizaciones interactivas
+st.header(f"Visualizaciones para {ciudad_seleccionada}")
+option = st.selectbox(
+    "Selecciona el tipo de visualización:",
+    ["Mapa", "Precios por Vecindario", "Precio vs. Puntuación", "Distribución de Precios"]
+)
+
+if option == "Mapa":
+    fig = px.scatter_mapbox(
+        filtered_data,
+        lat="latitude",
+        lon="longitude",
+        color="price",
+        size="number_of_reviews",
+        hover_name="name",
+        zoom=10,
+        title="Distribución Geográfica de Alojamientos",
+        color_continuous_scale=px.colors.sequential.Plasma
+    )
+    fig.update_layout(mapbox_style="open-street-map")
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Precios por Vecindario":
+    bar_data = filtered_data.groupby("neighborhood")["price"].mean().reset_index()
+    fig = px.bar(
+        bar_data,
+        x="neighborhood",
+        y="price",
+        title="Precio Promedio por Vecindario",
+        color="price",
+        color_continuous_scale=px.colors.sequential.Viridis
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Precio vs. Puntuación":
+    fig = px.scatter(
+        filtered_data,
+        x="review_scores_rating",
+        y="price",
+        color="room_type",
+        title="Precio vs. Puntuación por Tipo de Habitación",
+        hover_data=["neighborhood"],
+        color_discrete_sequence=px.colors.qualitative.Set2
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+elif option == "Distribución de Precios":
+    fig = px.histogram(
+        filtered_data,
+        x="price",
+        title="Distribución de Precios",
+        nbins=50,
+        color_discrete_sequence=["#FF6F61"]
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+# Métricas resumidas
+st.header("Métricas Resumidas")
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.metric("Precio Promedio", f"€{filtered_data['price'].mean():.2f}")
+with col2:
+    st.metric("Número de Alojamientos", len(filtered_data))
+with col3:
+    st.metric("Puntuación Promedio", f"{filtered_data['review_scores_rating'].mean():.2f}")
+
+# Pie de página
+st.markdown("---")
+st.markdown("TFG - Análisis Predictivo de Precios y Segmentación de Usuarios en Airbnb | Ángel Soto García")
