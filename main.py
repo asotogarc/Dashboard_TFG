@@ -50,8 +50,8 @@ except Exception as e:
 st.sidebar.header("Filtros")
 neighborhoods = st.sidebar.multiselect(
     "Seleccionar vecindarios",
-    options=data["neighborhood"].unique(),
-    default=data["neighborhood"].unique()
+    options=data["neighbourhood_cleansed"].unique(),
+    default=data["neighbourhood_cleansed"].unique()
 )
 price_range = st.sidebar.slider(
     "Rango de precios (€)",
@@ -62,7 +62,7 @@ price_range = st.sidebar.slider(
 
 # Filtrar datos según selecciones
 filtered_data = data[
-    (data["neighborhood"].isin(neighborhoods)) &
+    (data["neighbourhood_cleansed"].isin(neighbourhood_cleansed)) &
     (data["price"] >= price_range[0]) &
     (data["price"] <= price_range[1])
 ]
@@ -90,10 +90,10 @@ if option == "Mapa":
     st.plotly_chart(fig, use_container_width=True)
 
 elif option == "Precios por Vecindario":
-    bar_data = filtered_data.groupby("neighborhood")["price"].mean().reset_index()
+    bar_data = filtered_data.groupby("neighbourhood_cleansed")["price"].mean().reset_index()
     fig = px.bar(
         bar_data,
-        x="neighborhood",
+        x="neighbourhood_cleansed",
         y="price",
         title="Precio Promedio por Vecindario",
         color="price",
