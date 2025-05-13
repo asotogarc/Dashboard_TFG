@@ -94,7 +94,7 @@ if option == "Mapa":
         lon="longitude",
         color="price",
         size="number_of_reviews",
-        hover_name="name",
+        hover_name="neighbourhood_cleansed",  # Corregido: Usamos una columna existente
         zoom=10,
         title="Distribución Geográfica de Alojamientos",
         color_continuous_scale=px.colors.sequential.Plasma
