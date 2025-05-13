@@ -129,7 +129,6 @@ elif option == "Precio vs. Puntuación":
 elif option == "Distribución de Precios":
     fig = px.histogram(
         filtered_data,
-K
         x="price",
         title="Distribución de Precios",
         nbins=50,
