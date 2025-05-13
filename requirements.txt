@@ -4,5 +4,5 @@ numpy==1.26.0
 matplotlib==3.8.0
 plotly==5.17.0
 joblib==1.2.0
-lightgbm==3.3.2
+lightgbm
 setuptools
