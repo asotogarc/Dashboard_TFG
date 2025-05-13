@@ -427,7 +427,7 @@ elif option == "Análisis de Clusters":
     )
     fig3.update_xaxes(tickangle=45)
     st.plotly_chart(fig3, use_container_width=True)
-
+import requests
 # Métricas resumidas (sin cambios)
 elif option == "Predicción de Precios":
     st.subheader("Predicción de Precios con Modelo Entrenado")
