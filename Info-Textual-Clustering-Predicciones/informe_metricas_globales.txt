@@ -1,0 +1,28 @@
+INFORME DE MÉTRICAS GLOBALES DEL MODELO
+===================================
+
+Métricas en escala logarítmica:
+- RMSE: 0.2455
+- MAE: 0.1807
+- R²: 0.6431
+
+Métricas en escala real:
+- RMSE: 14.69
+- MAE: 11.14
+- R²: 0.5938
+- MAPE: 19.22%
+
+Información de hiperparámetros:
+- objective: regression
+- boosting_type: dart
+- num_leaves: 221
+- max_depth: 17
+- learning_rate: 0.16189527440075158
+- min_data_in_leaf: 478
+- feature_fraction: 0.7068845921541593
+- bagging_fraction: 0.9405090121090973
+- bagging_freq: 5
+- lambda_l1: 9.695188438928198e-08
+- lambda_l2: 6.020631560825188e-07
+- min_gain_to_split: 0.014618961039961829
+- min_sum_hessian_in_leaf: 5.000717454926336

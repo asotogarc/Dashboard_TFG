@@ -1,0 +1,14 @@
+RELACIÓN ENTRE DISTANCIA AL CENTRO Y PRECIO
+=======================================
+
+Ciudad          Corr. Pearson   Precio Medio    Dist. Media     Ratio Media    
+---------------------------------------------------------------------------
+Madrid          -0.1776         61.95           3.21            42.75          
+Barcelona       -0.0650         60.04           2.06            40.44          
+Sevilla         -0.1506         70.28           2.12            37.39          
+Valencia        0.0316          61.64           2.50            39.32          
+Málaga          -0.0873         70.21           1.79            79.28          
+Menorca         -0.0977         76.10           27.95           6.16           
+Mallorca        0.2830          75.14           31.26           18.73          
+Girona          0.1145          76.86           34.03           7.58           
+Euskadi         0.1168          70.47           32.67           21.41          

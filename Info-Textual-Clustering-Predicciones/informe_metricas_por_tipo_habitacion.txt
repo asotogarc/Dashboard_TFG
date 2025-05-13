@@ -1,0 +1,9 @@
+MÉTRICAS POR TIPO DE HABITACIÓN
+===============================
+
+Tipo de Habitación        MAE        MAPE (%)   Cantidad  
+-------------------------------------------------------
+Entire home/apt           10.68      15.17      14978.0   
+Shared room               8.50       20.44      277.0     
+Private room              11.79      24.61      11139.0   
+Hotel room                15.12      25.04      66.0      

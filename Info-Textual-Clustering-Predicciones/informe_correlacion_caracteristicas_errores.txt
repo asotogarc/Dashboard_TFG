@@ -1,0 +1,64 @@
+CORRELACIÓN ENTRE CARACTERÍSTICAS Y ERRORES
+=========================================
+
+Coeficientes de correlación con el error absoluto:
+
+person_per_bed                : 0.0302
+luxury_score                  : 0.0140
+essential_score               : 0.0024
+person_per_bedroom            : -0.0004
+maximum_nights                : -0.0038
+minimum_nights                : -0.0084
+bedrooms_squared              : -0.0120
+distance_to_center_squared    : -0.0141
+log_accommodates              : -0.0166
+distance_to_center            : -0.0177
+scaled_distance_to_center     : -0.0177
+bedrooms                      : -0.0201
+log_distance                  : -0.0231
+scaled_log_distance           : -0.0231
+beds_squared                  : -0.0241
+bed_accom_ratio               : -0.0256
+bed_to_bedroom_ratio          : -0.0257
+accommodates                  : -0.0271
+bathrooms_squared             : -0.0297
+log_maximum_nights            : -0.0301
+bed_bath_product              : -0.0319
+accommodates_squared          : -0.0321
+log_minimum_nights            : -0.0369
+beds                          : -0.0400
+bathroom_per_person           : -0.0413
+bathrooms                     : -0.0431
+scaled_total_amenities        : -0.0929
+total_amenities               : -0.0929
+
+Coeficientes de correlación con el error porcentual:
+
+bathroom_per_person           : 0.0886
+minimum_nights                : 0.0296
+bed_accom_ratio               : 0.0222
+log_minimum_nights            : 0.0196
+luxury_score                  : 0.0049
+bathrooms_squared             : -0.0014
+bathrooms                     : -0.0088
+maximum_nights                : -0.0168
+essential_score               : -0.0181
+bedrooms_squared              : -0.0246
+beds_squared                  : -0.0341
+log_maximum_nights            : -0.0347
+person_per_bed                : -0.0432
+bed_bath_product              : -0.0488
+bedrooms                      : -0.0539
+bed_to_bedroom_ratio          : -0.0588
+distance_to_center_squared    : -0.0639
+log_distance                  : -0.0723
+scaled_log_distance           : -0.0723
+distance_to_center            : -0.0794
+scaled_distance_to_center     : -0.0794
+beds                          : -0.1004
+person_per_bedroom            : -0.1100
+accommodates_squared          : -0.1130
+total_amenities               : -0.1424
+scaled_total_amenities        : -0.1424
+accommodates                  : -0.1526
+log_accommodates              : -0.1652

@@ -1,0 +1,89 @@
+MÉTRICAS POR TIPO DE PROPIEDAD
+==============================
+
+Tipo de Propiedad         MAE        MAPE (%)   Cantidad  
+-------------------------------------------------------
+Private room in cave      0.81       1.50       2.0       
+Campsite                  1.85       2.99       1.0       
+Shared room in floor      1.40       3.03       1.0       
+Shared room in tiny home  1.66       3.33       1.0       
+Private room in farm stay 3.38       3.78       5.0       
+Farm stay                 4.35       5.26       7.0       
+Hut                       4.32       5.43       2.0       
+Tipi                      4.79       6.15       7.0       
+Room in serviced apartment 6.01       6.53       4.0       
+Shared room in hotel      2.14       7.26       17.0      
+Private room in nature lodge 5.26       7.30       1.0       
+Shared room in guesthouse 4.62       7.99       24.0      
+Dome                      4.23       8.14       1.0       
+Holiday park              6.05       8.18       1.0       
+Entire villa              6.83       8.60       98.0      
+Shared room               3.32       8.75       1.0       
+Entire place              7.03       8.78       12.0      
+Entire cottage            8.37       9.32       45.0      
+Yurt                      7.40       9.63       4.0       
+Casa particular           8.25       10.41      17.0      
+Entire cabin              8.22       10.62      16.0      
+Private room in dome      3.35       10.93      6.0       
+Tent                      9.77       11.60      4.0       
+Private room in hut       10.62      12.04      2.0       
+Private room in minsu     7.86       12.09      1.0       
+Room in casa particular   3.79       12.22      1.0       
+Tiny home                 10.12      12.31      30.0      
+Entire home               9.41       12.40      649.0     
+Entire guesthouse         9.33       12.50      66.0      
+Entire serviced apartment 10.33      12.87      181.0     
+Private room in villa     7.73       13.13      30.0      
+Entire townhouse          10.64      13.27      64.0      
+Private room in cottage   7.87       13.79      68.0      
+Earthen home              11.15      13.89      3.0       
+Room in aparthotel        9.62       14.30      23.0      
+Entire bungalow           11.88      14.66      8.0       
+Entire condo              10.40      14.72      970.0     
+Entire loft               10.06      15.05      698.0     
+Entire guest suite        10.06      15.07      57.0      
+Private room in island    6.95       15.11      1.0       
+Camper/RV                 11.26      15.22      67.0      
+Entire vacation home      9.92       15.31      91.0      
+Shared room in home       8.59       15.50      10.0      
+Entire rental unit        10.89      15.53      11833.0   
+Private room in chalet    9.57       15.84      42.0      
+Treehouse                 7.36       16.35      1.0       
+Private room in earthen home 9.73       16.38      13.0      
+Entire chalet             12.62      16.85      21.0      
+Room in hostel            12.19      17.09      19.0      
+Private room in floor     11.85      17.37      7.0       
+Shared room in bed and breakfast 8.24       18.13      23.0      
+Entire home/apt           17.07      18.22      2.0       
+Private room in casa particular 9.60       18.39      264.0     
+Private room in townhouse 8.94       18.45      67.0      
+Boat                      11.93      19.08      11.0      
+Room in boutique hotel    14.18      19.59      72.0      
+Shared room in hostel     7.19       19.86      96.0      
+Shared room in villa      8.65       20.02      6.0       
+Private room              10.36      20.21      43.0      
+Private room in bed and breakfast 10.40      20.24      225.0     
+Floor                     16.17      20.26      3.0       
+Private room in cabin     11.26      20.47      1.0       
+Private room in tent      19.53      22.07      11.0      
+Private room in home      10.99      22.32      1074.0    
+Private room in condo     11.00      22.48      420.0     
+Private room in tiny home 14.12      22.69      6.0       
+Shared room in chalet     9.36       22.83      1.0       
+Shared room in boutique hotel 4.67       23.70      3.0       
+Private room in serviced apartment 11.94      24.66      53.0      
+Shared room in rental unit 11.76      24.71      81.0      
+Private room in vacation home 9.89       24.99      10.0      
+Private room in rental unit 11.94      25.63      8169.0    
+Room in hotel             14.72      25.66      229.0     
+Private room in loft      15.24      25.76      39.0      
+Private room in hostel    15.17      25.96      169.0     
+Private room in guesthouse 15.13      26.11      69.0      
+Island                    25.06      27.12      2.0       
+Private room in guest suite 14.65      29.12      54.0      
+Shared room in condo      9.80       33.80      6.0       
+Room in bed and breakfast 11.07      34.60      8.0       
+Shared room in casa particular 22.08      38.06      1.0       
+Private room in boat      18.93      39.60      3.0       
+Shared room in loft       19.38      60.42      5.0       
+Shared room in tent       28.88      96.25      1.0       

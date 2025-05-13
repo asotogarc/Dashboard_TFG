@@ -1,0 +1,44 @@
+INFORME RESUMEN DEL MODELO PREDICTIVO
+===================================
+
+RESUMEN DE RESULTADOS:
+El modelo LightGBM optimizado ha sido entrenado para predecir precios de alojamientos en 9 ciudades españolas. A continuación se presentan los principales hallazgos:
+
+1. RENDIMIENTO GLOBAL:
+   - El modelo alcanza un R² de 0.5938 en escala real, lo que indica que explica aproximadamente el 59.4% de la varianza en los precios.
+   - El error porcentual absoluto medio (MAPE) es de 19.22%, lo que sugiere que, en promedio, las predicciones se desvían en ese porcentaje del precio real.
+
+2. CARACTERÍSTICAS MÁS IMPORTANTES:
+   Las características que más influyen en la predicción de precios son:
+   - property_type: 0.29%
+   - room_type: 0.13%
+   - accommodates: 0.07%
+   - distance_to_center: 0.07%
+   - total_amenities: 0.07%
+
+3. DIFERENCIAS POR CIUDADES:
+   Se observan diferencias significativas en la precisión del modelo entre las diferentes ciudades:
+   - Madrid: MAPE 20.96%
+   - Barcelona: MAPE 24.54%
+   - Sevilla: MAPE 16.42%
+   - Valencia: MAPE 16.62%
+   - Málaga: MAPE 15.20%
+   - Menorca: MAPE 15.68%
+   - Mallorca: MAPE 17.87%
+   - Girona: MAPE 15.25%
+   - Euskadi: MAPE 15.61%
+
+4. INFLUENCIA DE LA DISTANCIA AL CENTRO:
+   La distancia al centro muestra una correlación relevante con el precio, aunque varía significativamente entre ciudades.
+
+5. IMPACTO DE AMENITIES:
+   Las propiedades con mayores scores de lujo y servicios esenciales tienden a tener precios más altos.
+
+6. COMPORTAMIENTO POR RANGO DE PRECIOS:
+   El modelo muestra mejor rendimiento en el rango medio de precios, mientras que tiene más dificultades
+   para predecir con precisión los precios muy bajos y muy altos.
+
+7. CONCLUSIONES:
+   - El modelo demuestra una capacidad predictiva sólida a nivel global.
+   - Existen oportunidades de mejora en la predicción de precios para propiedades de lujo y propiedades en determinadas zonas geográficas.
+   - La combinación de características de ubicación, capacidad y amenities proporciona una buena base para predecir precios de alojamientos.

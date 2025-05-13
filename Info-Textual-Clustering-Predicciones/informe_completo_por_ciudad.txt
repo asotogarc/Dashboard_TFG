@@ -1,0 +1,1587 @@
+INFORME COMPLETO DE ESTADÍSTICAS POR CIUDAD
+========================================
+
+
+
+==================================================
+CIUDAD: Madrid
+==================================================
+
+1. ESTADÍSTICAS BÁSICAS
+-------------------------
+Número de muestras: 7910
+Precio medio: 61.95
+Precio mediano: 63.00
+Precio mínimo: 13.00
+Precio máximo: 100.00
+Desviación estándar: 23.90
+
+2. MÉTRICAS DE ERROR
+-------------------------
+MAE: 11.22
+MAPE: 20.96%
+RMSE: 15.27
+R²: 0.5917
+
+3. DISTRIBUCIÓN POR TIPO DE PROPIEDAD
+-------------------------
+Entire rental unit: 3125 (39.5%)
+Private room in rental unit: 3095 (39.1%)
+Private room in home: 418 (5.3%)
+Entire loft: 180 (2.3%)
+Entire condo: 180 (2.3%)
+Private room in condo: 171 (2.2%)
+Private room in casa particular: 100 (1.3%)
+Entire home: 65 (0.8%)
+Private room in bed and breakfast: 59 (0.7%)
+Shared room in rental unit: 58 (0.7%)
+Private room in hostel: 54 (0.7%)
+Shared room in hostel: 51 (0.6%)
+Room in hotel: 41 (0.5%)
+Entire serviced apartment: 31 (0.4%)
+Private room in guesthouse: 27 (0.3%)
+Private room: 26 (0.3%)
+Room in boutique hotel: 19 (0.2%)
+Private room in serviced apartment: 19 (0.2%)
+Shared room in guesthouse: 18 (0.2%)
+Private room in chalet: 17 (0.2%)
+Private room in guest suite: 16 (0.2%)
+Shared room in bed and breakfast: 15 (0.2%)
+Private room in townhouse: 15 (0.2%)
+Entire vacation home: 10 (0.1%)
+Shared room in hotel: 8 (0.1%)
+Private room in loft: 7 (0.1%)
+Entire guesthouse: 7 (0.1%)
+Entire guest suite: 7 (0.1%)
+Room in hostel: 6 (0.1%)
+Tiny home: 6 (0.1%)
+Shared room in home: 5 (0.1%)
+Shared room in condo: 5 (0.1%)
+Private room in tiny home: 4 (0.1%)
+Private room in vacation home: 4 (0.1%)
+Room in aparthotel: 4 (0.1%)
+Floor: 3 (0.0%)
+Private room in villa: 3 (0.0%)
+Entire place: 3 (0.0%)
+Private room in dome: 3 (0.0%)
+Entire townhouse: 3 (0.0%)
+Private room in floor: 2 (0.0%)
+Private room in cave: 2 (0.0%)
+Camper/RV: 2 (0.0%)
+Shared room in loft: 2 (0.0%)
+Room in bed and breakfast: 1 (0.0%)
+Shared room in boutique hotel: 1 (0.0%)
+Shared room in tiny home: 1 (0.0%)
+Room in casa particular: 1 (0.0%)
+Shared room: 1 (0.0%)
+Shared room in casa particular: 1 (0.0%)
+Shared room in chalet: 1 (0.0%)
+Yurt: 1 (0.0%)
+Entire home/apt: 1 (0.0%)
+Private room in earthen home: 1 (0.0%)
+Entire cabin: 1 (0.0%)
+Hut: 1 (0.0%)
+Entire chalet: 1 (0.0%)
+Private room in minsu: 1 (0.0%)
+Campsite: 0 (0.0%)
+Tipi: 0 (0.0%)
+Tent: 0 (0.0%)
+Entire cottage: 0 (0.0%)
+Casa particular: 0 (0.0%)
+Shared room in tent: 0 (0.0%)
+Dome: 0 (0.0%)
+Treehouse: 0 (0.0%)
+Earthen home: 0 (0.0%)
+Entire bungalow: 0 (0.0%)
+Shared room in villa: 0 (0.0%)
+Private room in tent: 0 (0.0%)
+Shared room in floor: 0 (0.0%)
+Private room in nature lodge: 0 (0.0%)
+Entire villa: 0 (0.0%)
+Farm stay: 0 (0.0%)
+Holiday park: 0 (0.0%)
+Island: 0 (0.0%)
+Room in serviced apartment: 0 (0.0%)
+Private room in boat: 0 (0.0%)
+Private room in cabin: 0 (0.0%)
+Private room in cottage: 0 (0.0%)
+Private room in farm stay: 0 (0.0%)
+Private room in hut: 0 (0.0%)
+Private room in island: 0 (0.0%)
+Boat: 0 (0.0%)
+
+4. DISTRIBUCIÓN POR TIPO DE HABITACIÓN
+-------------------------
+Private room: 4098 (51.8%)
+Entire home/apt: 3628 (45.9%)
+Shared room: 167 (2.1%)
+Hotel room: 17 (0.2%)
+
+5. ESTADÍSTICAS DE CARACTERÍSTICAS NUMÉRICAS
+-------------------------
+accommodates:
+  Media: 2.28
+  Mediana: 2.00
+  Mín: 1.00
+  Máx: 16.00
+
+bathrooms:
+  Media: 1.13
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 10.00
+
+bedrooms:
+  Media: 1.11
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 18.00
+
+beds:
+  Media: 1.43
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 40.00
+
+distance_to_center:
+  Media: 3.21
+  Mediana: 2.60
+  Mín: 0.00
+  Máx: 13.37
+
+luxury_score:
+  Media: 0.08
+  Mediana: 0.00
+  Mín: 0.00
+  Máx: 0.80
+
+essential_score:
+  Media: 0.68
+  Mediana: 0.60
+  Mín: 0.00
+  Máx: 1.00
+
+total_amenities:
+  Media: 23.81
+  Mediana: 23.00
+  Mín: 0.00
+  Máx: 80.00
+
+6. CORRELACIONES CON EL PRECIO
+-------------------------
+accommodates: 0.4372
+essential_score: 0.1793
+distance_to_center: -0.1776
+total_amenities: 0.1578
+beds: 0.1199
+bathrooms: -0.1010
+luxury_score: 0.0846
+bedrooms: 0.0212
+
+
+==================================================
+CIUDAD: Barcelona
+==================================================
+
+1. ESTADÍSTICAS BÁSICAS
+-------------------------
+Número de muestras: 5437
+Precio medio: 60.04
+Precio mediano: 60.00
+Precio mínimo: 15.00
+Precio máximo: 100.00
+Desviación estándar: 23.13
+
+2. MÉTRICAS DE ERROR
+-------------------------
+MAE: 12.83
+MAPE: 24.54%
+RMSE: 16.96
+R²: 0.4625
+
+3. DISTRIBUCIÓN POR TIPO DE PROPIEDAD
+-------------------------
+Private room in rental unit: 2731 (50.2%)
+Entire rental unit: 1891 (34.8%)
+Private room in condo: 108 (2.0%)
+Entire condo: 93 (1.7%)
+Private room in home: 92 (1.7%)
+Entire loft: 80 (1.5%)
+Room in hotel: 78 (1.4%)
+Entire serviced apartment: 33 (0.6%)
+Private room in hostel: 32 (0.6%)
+Private room in casa particular: 31 (0.6%)
+Shared room in hostel: 28 (0.5%)
+Private room in bed and breakfast: 27 (0.5%)
+Room in boutique hotel: 22 (0.4%)
+Private room in guest suite: 21 (0.4%)
+Private room in loft: 19 (0.3%)
+Private room in serviced apartment: 18 (0.3%)
+Entire home: 14 (0.3%)
+Shared room in rental unit: 11 (0.2%)
+Private room in guesthouse: 10 (0.2%)
+Room in hostel: 10 (0.2%)
+Entire guesthouse: 8 (0.1%)
+Private room: 8 (0.1%)
+Camper/RV: 8 (0.1%)
+Private room in townhouse: 6 (0.1%)
+Shared room in guesthouse: 6 (0.1%)
+Shared room in villa: 5 (0.1%)
+Private room in floor: 5 (0.1%)
+Entire vacation home: 5 (0.1%)
+Entire place: 4 (0.1%)
+Entire guest suite: 4 (0.1%)
+Private room in dome: 3 (0.1%)
+Shared room in bed and breakfast: 3 (0.1%)
+Private room in villa: 2 (0.0%)
+Casa particular: 2 (0.0%)
+Entire villa: 2 (0.0%)
+Shared room in loft: 2 (0.0%)
+Entire chalet: 2 (0.0%)
+Private room in vacation home: 1 (0.0%)
+Room in aparthotel: 1 (0.0%)
+Room in bed and breakfast: 1 (0.0%)
+Shared room in home: 1 (0.0%)
+Room in serviced apartment: 1 (0.0%)
+Shared room in floor: 1 (0.0%)
+Shared room in hotel: 1 (0.0%)
+Boat: 1 (0.0%)
+Yurt: 1 (0.0%)
+Entire townhouse: 1 (0.0%)
+Entire cabin: 1 (0.0%)
+Private room in boat: 1 (0.0%)
+Private room in chalet: 1 (0.0%)
+Earthen home: 0 (0.0%)
+Shared room in condo: 0 (0.0%)
+Entire home/apt: 0 (0.0%)
+Entire cottage: 0 (0.0%)
+Entire bungalow: 0 (0.0%)
+Dome: 0 (0.0%)
+Shared room in casa particular: 0 (0.0%)
+Shared room in tent: 0 (0.0%)
+Shared room in tiny home: 0 (0.0%)
+Campsite: 0 (0.0%)
+Tent: 0 (0.0%)
+Tiny home: 0 (0.0%)
+Tipi: 0 (0.0%)
+Treehouse: 0 (0.0%)
+Shared room in chalet: 0 (0.0%)
+Private room in island: 0 (0.0%)
+Shared room in boutique hotel: 0 (0.0%)
+Private room in hut: 0 (0.0%)
+Private room in minsu: 0 (0.0%)
+Private room in nature lodge: 0 (0.0%)
+Private room in farm stay: 0 (0.0%)
+Private room in earthen home: 0 (0.0%)
+Private room in tent: 0 (0.0%)
+Private room in tiny home: 0 (0.0%)
+Private room in cottage: 0 (0.0%)
+Private room in cave: 0 (0.0%)
+Private room in cabin: 0 (0.0%)
+Island: 0 (0.0%)
+Room in casa particular: 0 (0.0%)
+Hut: 0 (0.0%)
+Holiday park: 0 (0.0%)
+Floor: 0 (0.0%)
+Shared room: 0 (0.0%)
+Farm stay: 0 (0.0%)
+
+4. DISTRIBUCIÓN POR TIPO DE HABITACIÓN
+-------------------------
+Private room: 3205 (58.9%)
+Entire home/apt: 2150 (39.5%)
+Shared room: 58 (1.1%)
+Hotel room: 24 (0.4%)
+
+5. ESTADÍSTICAS DE CARACTERÍSTICAS NUMÉRICAS
+-------------------------
+accommodates:
+  Media: 2.33
+  Mediana: 2.00
+  Mín: 1.00
+  Máx: 15.00
+
+bathrooms:
+  Media: 1.22
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 8.00
+
+bedrooms:
+  Media: 1.37
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 10.00
+
+beds:
+  Media: 1.62
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 26.00
+
+distance_to_center:
+  Media: 2.06
+  Mediana: 1.75
+  Mín: 0.03
+  Máx: 7.89
+
+luxury_score:
+  Media: 0.09
+  Mediana: 0.00
+  Mín: 0.00
+  Máx: 0.80
+
+essential_score:
+  Media: 0.68
+  Mediana: 0.60
+  Mín: 0.00
+  Máx: 1.00
+
+total_amenities:
+  Media: 23.47
+  Mediana: 22.00
+  Mín: 0.00
+  Máx: 89.00
+
+6. CORRELACIONES CON EL PRECIO
+-------------------------
+accommodates: 0.4346
+beds: 0.2072
+bedrooms: 0.1611
+total_amenities: 0.1574
+bathrooms: -0.1064
+luxury_score: 0.0770
+distance_to_center: -0.0650
+essential_score: 0.0255
+
+
+==================================================
+CIUDAD: Sevilla
+==================================================
+
+1. ESTADÍSTICAS BÁSICAS
+-------------------------
+Número de muestras: 1645
+Precio medio: 70.28
+Precio mediano: 73.00
+Precio mínimo: 12.00
+Precio máximo: 100.00
+Desviación estándar: 19.96
+
+2. MÉTRICAS DE ERROR
+-------------------------
+MAE: 11.08
+MAPE: 16.42%
+RMSE: 14.02
+R²: 0.5064
+
+3. DISTRIBUCIÓN POR TIPO DE PROPIEDAD
+-------------------------
+Entire rental unit: 997 (60.6%)
+Private room in rental unit: 259 (15.7%)
+Private room in home: 121 (7.4%)
+Entire loft: 66 (4.0%)
+Entire condo: 58 (3.5%)
+Private room in hostel: 27 (1.6%)
+Entire home: 22 (1.3%)
+Private room in casa particular: 17 (1.0%)
+Private room in bed and breakfast: 13 (0.8%)
+Private room in condo: 11 (0.7%)
+Entire serviced apartment: 10 (0.6%)
+Private room in townhouse: 8 (0.5%)
+Entire guesthouse: 6 (0.4%)
+Entire guest suite: 5 (0.3%)
+Casa particular: 5 (0.3%)
+Room in hotel: 4 (0.2%)
+Shared room in rental unit: 3 (0.2%)
+Entire vacation home: 3 (0.2%)
+Camper/RV: 2 (0.1%)
+Shared room in hostel: 2 (0.1%)
+Private room in earthen home: 1 (0.1%)
+Room in boutique hotel: 1 (0.1%)
+Room in serviced apartment: 1 (0.1%)
+Private room in chalet: 1 (0.1%)
+Private room in serviced apartment: 1 (0.1%)
+Tiny home: 1 (0.1%)
+Private room in tent: 0 (0.0%)
+Shared room in chalet: 0 (0.0%)
+Treehouse: 0 (0.0%)
+Private room in tiny home: 0 (0.0%)
+Tipi: 0 (0.0%)
+Private room in vacation home: 0 (0.0%)
+Private room in villa: 0 (0.0%)
+Room in aparthotel: 0 (0.0%)
+Tent: 0 (0.0%)
+Room in bed and breakfast: 0 (0.0%)
+Shared room in villa: 0 (0.0%)
+Room in casa particular: 0 (0.0%)
+Room in hostel: 0 (0.0%)
+Shared room in tiny home: 0 (0.0%)
+Shared room in tent: 0 (0.0%)
+Shared room in loft: 0 (0.0%)
+Shared room in hotel: 0 (0.0%)
+Shared room in home: 0 (0.0%)
+Shared room: 0 (0.0%)
+Shared room in guesthouse: 0 (0.0%)
+Shared room in bed and breakfast: 0 (0.0%)
+Shared room in boutique hotel: 0 (0.0%)
+Shared room in floor: 0 (0.0%)
+Shared room in casa particular: 0 (0.0%)
+Shared room in condo: 0 (0.0%)
+Boat: 0 (0.0%)
+Private room in nature lodge: 0 (0.0%)
+Private room in minsu: 0 (0.0%)
+Campsite: 0 (0.0%)
+Dome: 0 (0.0%)
+Earthen home: 0 (0.0%)
+Entire bungalow: 0 (0.0%)
+Entire cabin: 0 (0.0%)
+Entire chalet: 0 (0.0%)
+Entire cottage: 0 (0.0%)
+Entire home/apt: 0 (0.0%)
+Entire place: 0 (0.0%)
+Entire townhouse: 0 (0.0%)
+Entire villa: 0 (0.0%)
+Farm stay: 0 (0.0%)
+Floor: 0 (0.0%)
+Holiday park: 0 (0.0%)
+Hut: 0 (0.0%)
+Island: 0 (0.0%)
+Private room: 0 (0.0%)
+Private room in boat: 0 (0.0%)
+Private room in cabin: 0 (0.0%)
+Private room in cave: 0 (0.0%)
+Private room in cottage: 0 (0.0%)
+Private room in dome: 0 (0.0%)
+Private room in farm stay: 0 (0.0%)
+Private room in floor: 0 (0.0%)
+Private room in guest suite: 0 (0.0%)
+Private room in guesthouse: 0 (0.0%)
+Private room in hut: 0 (0.0%)
+Private room in island: 0 (0.0%)
+Private room in loft: 0 (0.0%)
+Yurt: 0 (0.0%)
+
+4. DISTRIBUCIÓN POR TIPO DE HABITACIÓN
+-------------------------
+Entire home/apt: 1175 (71.4%)
+Private room: 464 (28.2%)
+Shared room: 5 (0.3%)
+Hotel room: 1 (0.1%)
+
+5. ESTADÍSTICAS DE CARACTERÍSTICAS NUMÉRICAS
+-------------------------
+accommodates:
+  Media: 3.11
+  Mediana: 3.00
+  Mín: 1.00
+  Máx: 14.00
+
+bathrooms:
+  Media: 1.09
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 6.00
+
+bedrooms:
+  Media: 1.23
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 6.00
+
+beds:
+  Media: 1.90
+  Mediana: 2.00
+  Mín: 0.00
+  Máx: 17.00
+
+distance_to_center:
+  Media: 2.12
+  Mediana: 2.01
+  Mín: 0.31
+  Máx: 7.51
+
+luxury_score:
+  Media: 0.07
+  Mediana: 0.00
+  Mín: 0.00
+  Máx: 0.40
+
+essential_score:
+  Media: 0.66
+  Mediana: 0.60
+  Mín: 0.00
+  Máx: 1.00
+
+total_amenities:
+  Media: 30.76
+  Mediana: 31.00
+  Mín: 1.00
+  Máx: 67.00
+
+6. CORRELACIONES CON EL PRECIO
+-------------------------
+accommodates: 0.3509
+beds: 0.1800
+essential_score: 0.1507
+distance_to_center: -0.1506
+total_amenities: 0.1360
+bedrooms: 0.1178
+luxury_score: 0.1055
+bathrooms: -0.0466
+
+
+==================================================
+CIUDAD: Valencia
+==================================================
+
+1. ESTADÍSTICAS BÁSICAS
+-------------------------
+Número de muestras: 2619
+Precio medio: 61.64
+Precio mediano: 62.00
+Precio mínimo: 13.00
+Precio máximo: 100.00
+Desviación estándar: 23.98
+
+2. MÉTRICAS DE ERROR
+-------------------------
+MAE: 9.37
+MAPE: 16.62%
+RMSE: 12.41
+R²: 0.7320
+
+3. DISTRIBUCIÓN POR TIPO DE PROPIEDAD
+-------------------------
+Entire rental unit: 1009 (38.5%)
+Private room in rental unit: 1007 (38.4%)
+Entire loft: 189 (7.2%)
+Private room in home: 93 (3.6%)
+Private room in condo: 65 (2.5%)
+Entire condo: 64 (2.4%)
+Private room in casa particular: 33 (1.3%)
+Entire home: 33 (1.3%)
+Private room in bed and breakfast: 25 (1.0%)
+Entire serviced apartment: 12 (0.5%)
+Room in hotel: 11 (0.4%)
+Room in boutique hotel: 8 (0.3%)
+Private room in serviced apartment: 8 (0.3%)
+Shared room in hotel: 7 (0.3%)
+Private room in hostel: 6 (0.2%)
+Boat: 6 (0.2%)
+Entire guest suite: 5 (0.2%)
+Camper/RV: 4 (0.2%)
+Private room in guesthouse: 4 (0.2%)
+Entire vacation home: 4 (0.2%)
+Room in aparthotel: 4 (0.2%)
+Shared room in rental unit: 4 (0.2%)
+Private room: 3 (0.1%)
+Entire townhouse: 2 (0.1%)
+Private room in vacation home: 2 (0.1%)
+Private room in guest suite: 2 (0.1%)
+Casa particular: 2 (0.1%)
+Entire cottage: 1 (0.0%)
+Shared room in condo: 1 (0.0%)
+Private room in loft: 1 (0.0%)
+Shared room in loft: 1 (0.0%)
+Private room in boat: 1 (0.0%)
+Room in hostel: 1 (0.0%)
+Entire guesthouse: 1 (0.0%)
+Shared room: 0 (0.0%)
+Shared room in chalet: 0 (0.0%)
+Shared room in bed and breakfast: 0 (0.0%)
+Room in serviced apartment: 0 (0.0%)
+Shared room in boutique hotel: 0 (0.0%)
+Shared room in casa particular: 0 (0.0%)
+Room in casa particular: 0 (0.0%)
+Dome: 0 (0.0%)
+Entire place: 0 (0.0%)
+Shared room in home: 0 (0.0%)
+Shared room in floor: 0 (0.0%)
+Shared room in guesthouse: 0 (0.0%)
+Shared room in hostel: 0 (0.0%)
+Campsite: 0 (0.0%)
+Shared room in tent: 0 (0.0%)
+Shared room in tiny home: 0 (0.0%)
+Shared room in villa: 0 (0.0%)
+Tent: 0 (0.0%)
+Tiny home: 0 (0.0%)
+Tipi: 0 (0.0%)
+Treehouse: 0 (0.0%)
+Room in bed and breakfast: 0 (0.0%)
+Earthen home: 0 (0.0%)
+Private room in villa: 0 (0.0%)
+Private room in dome: 0 (0.0%)
+Entire villa: 0 (0.0%)
+Farm stay: 0 (0.0%)
+Floor: 0 (0.0%)
+Holiday park: 0 (0.0%)
+Hut: 0 (0.0%)
+Island: 0 (0.0%)
+Private room in cabin: 0 (0.0%)
+Private room in cave: 0 (0.0%)
+Private room in chalet: 0 (0.0%)
+Entire chalet: 0 (0.0%)
+Private room in cottage: 0 (0.0%)
+Private room in earthen home: 0 (0.0%)
+Private room in townhouse: 0 (0.0%)
+Private room in farm stay: 0 (0.0%)
+Private room in floor: 0 (0.0%)
+Entire cabin: 0 (0.0%)
+Private room in hut: 0 (0.0%)
+Private room in island: 0 (0.0%)
+Private room in minsu: 0 (0.0%)
+Private room in nature lodge: 0 (0.0%)
+Entire bungalow: 0 (0.0%)
+Entire home/apt: 0 (0.0%)
+Private room in tent: 0 (0.0%)
+Private room in tiny home: 0 (0.0%)
+Yurt: 0 (0.0%)
+
+4. DISTRIBUCIÓN POR TIPO DE HABITACIÓN
+-------------------------
+Entire home/apt: 1335 (51.0%)
+Private room: 1266 (48.3%)
+Shared room: 13 (0.5%)
+Hotel room: 5 (0.2%)
+
+5. ESTADÍSTICAS DE CARACTERÍSTICAS NUMÉRICAS
+-------------------------
+accommodates:
+  Media: 2.64
+  Mediana: 2.00
+  Mín: 1.00
+  Máx: 16.00
+
+bathrooms:
+  Media: 1.12
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 11.00
+
+bedrooms:
+  Media: 1.28
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 17.00
+
+beds:
+  Media: 1.59
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 17.00
+
+distance_to_center:
+  Media: 2.50
+  Mediana: 2.12
+  Mín: 0.05
+  Máx: 22.88
+
+luxury_score:
+  Media: 0.07
+  Mediana: 0.00
+  Mín: 0.00
+  Máx: 0.40
+
+essential_score:
+  Media: 0.64
+  Mediana: 0.60
+  Mín: 0.00
+  Máx: 1.00
+
+total_amenities:
+  Media: 28.75
+  Mediana: 30.00
+  Mín: 0.00
+  Máx: 78.00
+
+6. CORRELACIONES CON EL PRECIO
+-------------------------
+accommodates: 0.5666
+beds: 0.3140
+bedrooms: 0.2126
+essential_score: 0.2108
+total_amenities: 0.2065
+luxury_score: -0.0628
+distance_to_center: 0.0316
+bathrooms: -0.0305
+
+
+==================================================
+CIUDAD: Málaga
+==================================================
+
+1. ESTADÍSTICAS BÁSICAS
+-------------------------
+Número de muestras: 2229
+Precio medio: 70.21
+Precio mediano: 75.00
+Precio mínimo: 14.00
+Precio máximo: 100.00
+Desviación estándar: 21.86
+
+2. MÉTRICAS DE ERROR
+-------------------------
+MAE: 9.84
+MAPE: 15.20%
+RMSE: 12.53
+R²: 0.6715
+
+3. DISTRIBUCIÓN POR TIPO DE PROPIEDAD
+-------------------------
+Entire rental unit: 1305 (58.5%)
+Private room in rental unit: 391 (17.5%)
+Entire loft: 93 (4.2%)
+Entire condo: 84 (3.8%)
+Private room in home: 76 (3.4%)
+Entire home: 49 (2.2%)
+Entire serviced apartment: 44 (2.0%)
+Private room in casa particular: 32 (1.4%)
+Private room in condo: 28 (1.3%)
+Room in hotel: 25 (1.1%)
+Entire vacation home: 19 (0.9%)
+Private room in townhouse: 9 (0.4%)
+Private room in loft: 8 (0.4%)
+Entire guest suite: 7 (0.3%)
+Room in aparthotel: 7 (0.3%)
+Entire townhouse: 6 (0.3%)
+Private room in hostel: 5 (0.2%)
+Camper/RV: 5 (0.2%)
+Private room in guesthouse: 5 (0.2%)
+Private room in bed and breakfast: 5 (0.2%)
+Tiny home: 4 (0.2%)
+Private room in serviced apartment: 4 (0.2%)
+Private room in chalet: 3 (0.1%)
+Room in boutique hotel: 2 (0.1%)
+Entire villa: 2 (0.1%)
+Entire place: 1 (0.0%)
+Entire cabin: 1 (0.0%)
+Earthen home: 1 (0.0%)
+Room in serviced apartment: 1 (0.0%)
+Dome: 1 (0.0%)
+Entire guesthouse: 1 (0.0%)
+Casa particular: 1 (0.0%)
+Shared room in hotel: 1 (0.0%)
+Private room: 1 (0.0%)
+Shared room in rental unit: 1 (0.0%)
+Entire chalet: 1 (0.0%)
+Room in hostel: 0 (0.0%)
+Room in casa particular: 0 (0.0%)
+Shared room: 0 (0.0%)
+Treehouse: 0 (0.0%)
+Shared room in bed and breakfast: 0 (0.0%)
+Tipi: 0 (0.0%)
+Shared room in chalet: 0 (0.0%)
+Shared room in boutique hotel: 0 (0.0%)
+Shared room in casa particular: 0 (0.0%)
+Shared room in condo: 0 (0.0%)
+Shared room in floor: 0 (0.0%)
+Shared room in guesthouse: 0 (0.0%)
+Shared room in home: 0 (0.0%)
+Shared room in hostel: 0 (0.0%)
+Tent: 0 (0.0%)
+Shared room in loft: 0 (0.0%)
+Shared room in tent: 0 (0.0%)
+Shared room in tiny home: 0 (0.0%)
+Shared room in villa: 0 (0.0%)
+Room in bed and breakfast: 0 (0.0%)
+Boat: 0 (0.0%)
+Private room in villa: 0 (0.0%)
+Private room in cave: 0 (0.0%)
+Campsite: 0 (0.0%)
+Entire bungalow: 0 (0.0%)
+Entire cottage: 0 (0.0%)
+Entire home/apt: 0 (0.0%)
+Farm stay: 0 (0.0%)
+Floor: 0 (0.0%)
+Holiday park: 0 (0.0%)
+Hut: 0 (0.0%)
+Island: 0 (0.0%)
+Private room in boat: 0 (0.0%)
+Private room in cabin: 0 (0.0%)
+Private room in cottage: 0 (0.0%)
+Private room in vacation home: 0 (0.0%)
+Private room in dome: 0 (0.0%)
+Private room in earthen home: 0 (0.0%)
+Private room in farm stay: 0 (0.0%)
+Private room in floor: 0 (0.0%)
+Private room in guest suite: 0 (0.0%)
+Private room in hut: 0 (0.0%)
+Private room in island: 0 (0.0%)
+Private room in minsu: 0 (0.0%)
+Private room in nature lodge: 0 (0.0%)
+Private room in tent: 0 (0.0%)
+Private room in tiny home: 0 (0.0%)
+Yurt: 0 (0.0%)
+
+4. DISTRIBUCIÓN POR TIPO DE HABITACIÓN
+-------------------------
+Entire home/apt: 1625 (72.9%)
+Private room: 601 (27.0%)
+Shared room: 2 (0.1%)
+Hotel room: 1 (0.0%)
+
+5. ESTADÍSTICAS DE CARACTERÍSTICAS NUMÉRICAS
+-------------------------
+accommodates:
+  Media: 3.00
+  Mediana: 3.00
+  Mín: 1.00
+  Máx: 10.00
+
+bathrooms:
+  Media: 1.08
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 3.00
+
+bedrooms:
+  Media: 1.21
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 5.00
+
+beds:
+  Media: 1.80
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 12.00
+
+distance_to_center:
+  Media: 1.79
+  Mediana: 1.00
+  Mín: 0.04
+  Máx: 14.94
+
+luxury_score:
+  Media: 0.09
+  Mediana: 0.00
+  Mín: 0.00
+  Máx: 0.60
+
+essential_score:
+  Media: 0.70
+  Mediana: 0.80
+  Mín: 0.00
+  Máx: 1.00
+
+total_amenities:
+  Media: 30.92
+  Mediana: 31.00
+  Mín: 0.00
+  Máx: 82.00
+
+6. CORRELACIONES CON EL PRECIO
+-------------------------
+accommodates: 0.4528
+beds: 0.2302
+essential_score: 0.2251
+bedrooms: 0.1481
+luxury_score: 0.1326
+total_amenities: 0.1254
+distance_to_center: -0.0873
+bathrooms: -0.0837
+
+
+==================================================
+CIUDAD: Menorca
+==================================================
+
+1. ESTADÍSTICAS BÁSICAS
+-------------------------
+Número de muestras: 465
+Precio medio: 76.10
+Precio mediano: 78.00
+Precio mínimo: 26.00
+Precio máximo: 100.00
+Desviación estándar: 16.66
+
+2. MÉTRICAS DE ERROR
+-------------------------
+MAE: 10.98
+MAPE: 15.68%
+RMSE: 14.19
+R²: 0.2723
+
+3. DISTRIBUCIÓN POR TIPO DE PROPIEDAD
+-------------------------
+Entire rental unit: 167 (35.9%)
+Entire condo: 125 (26.9%)
+Entire home: 44 (9.5%)
+Entire villa: 22 (4.7%)
+Private room in home: 19 (4.1%)
+Private room in rental unit: 13 (2.8%)
+Entire vacation home: 13 (2.8%)
+Camper/RV: 8 (1.7%)
+Entire chalet: 7 (1.5%)
+Entire serviced apartment: 5 (1.1%)
+Room in hotel: 4 (0.9%)
+Private room in cottage: 4 (0.9%)
+Entire townhouse: 4 (0.9%)
+Entire guesthouse: 4 (0.9%)
+Private room in earthen home: 3 (0.6%)
+Boat: 3 (0.6%)
+Entire cottage: 3 (0.6%)
+Entire loft: 3 (0.6%)
+Private room in guest suite: 2 (0.4%)
+Private room in villa: 2 (0.4%)
+Tiny home: 2 (0.4%)
+Private room in boat: 1 (0.2%)
+Private room in guesthouse: 1 (0.2%)
+Private room in condo: 1 (0.2%)
+Private room in hostel: 1 (0.2%)
+Private room in casa particular: 1 (0.2%)
+Entire bungalow: 1 (0.2%)
+Room in boutique hotel: 1 (0.2%)
+Private room in townhouse: 1 (0.2%)
+Shared room in casa particular: 0 (0.0%)
+Shared room: 0 (0.0%)
+Campsite: 0 (0.0%)
+Shared room in bed and breakfast: 0 (0.0%)
+Room in hostel: 0 (0.0%)
+Room in casa particular: 0 (0.0%)
+Shared room in boutique hotel: 0 (0.0%)
+Room in bed and breakfast: 0 (0.0%)
+Room in serviced apartment: 0 (0.0%)
+Entire place: 0 (0.0%)
+Shared room in chalet: 0 (0.0%)
+Shared room in condo: 0 (0.0%)
+Shared room in floor: 0 (0.0%)
+Shared room in guesthouse: 0 (0.0%)
+Shared room in home: 0 (0.0%)
+Shared room in hostel: 0 (0.0%)
+Shared room in hotel: 0 (0.0%)
+Shared room in loft: 0 (0.0%)
+Shared room in rental unit: 0 (0.0%)
+Shared room in tent: 0 (0.0%)
+Shared room in tiny home: 0 (0.0%)
+Shared room in villa: 0 (0.0%)
+Tent: 0 (0.0%)
+Tipi: 0 (0.0%)
+Treehouse: 0 (0.0%)
+Room in aparthotel: 0 (0.0%)
+Private room in serviced apartment: 0 (0.0%)
+Private room in vacation home: 0 (0.0%)
+Private room in tiny home: 0 (0.0%)
+Entire home/apt: 0 (0.0%)
+Entire guest suite: 0 (0.0%)
+Entire cabin: 0 (0.0%)
+Farm stay: 0 (0.0%)
+Floor: 0 (0.0%)
+Holiday park: 0 (0.0%)
+Hut: 0 (0.0%)
+Island: 0 (0.0%)
+Private room: 0 (0.0%)
+Private room in bed and breakfast: 0 (0.0%)
+Private room in cabin: 0 (0.0%)
+Private room in cave: 0 (0.0%)
+Private room in chalet: 0 (0.0%)
+Private room in dome: 0 (0.0%)
+Earthen home: 0 (0.0%)
+Private room in farm stay: 0 (0.0%)
+Private room in floor: 0 (0.0%)
+Dome: 0 (0.0%)
+Private room in hut: 0 (0.0%)
+Private room in island: 0 (0.0%)
+Private room in loft: 0 (0.0%)
+Private room in minsu: 0 (0.0%)
+Private room in nature lodge: 0 (0.0%)
+Casa particular: 0 (0.0%)
+Private room in tent: 0 (0.0%)
+Yurt: 0 (0.0%)
+
+4. DISTRIBUCIÓN POR TIPO DE HABITACIÓN
+-------------------------
+Entire home/apt: 411 (88.4%)
+Private room: 54 (11.6%)
+Hotel room: 0 (0.0%)
+Shared room: 0 (0.0%)
+
+5. ESTADÍSTICAS DE CARACTERÍSTICAS NUMÉRICAS
+-------------------------
+accommodates:
+  Media: 3.95
+  Mediana: 4.00
+  Mín: 1.00
+  Máx: 10.00
+
+bathrooms:
+  Media: 1.18
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 5.00
+
+bedrooms:
+  Media: 1.81
+  Mediana: 2.00
+  Mín: 0.00
+  Máx: 14.00
+
+beds:
+  Media: 2.98
+  Mediana: 3.00
+  Mín: 0.00
+  Máx: 9.00
+
+distance_to_center:
+  Media: 27.95
+  Mediana: 36.81
+  Mín: 0.11
+  Máx: 42.67
+
+luxury_score:
+  Media: 0.06
+  Mediana: 0.00
+  Mín: 0.00
+  Máx: 0.40
+
+essential_score:
+  Media: 0.62
+  Mediana: 0.60
+  Mín: 0.00
+  Máx: 1.00
+
+total_amenities:
+  Media: 34.00
+  Mediana: 33.00
+  Mín: 3.00
+  Máx: 88.00
+
+6. CORRELACIONES CON EL PRECIO
+-------------------------
+bathrooms: 0.2378
+bedrooms: 0.2318
+accommodates: 0.2043
+essential_score: 0.1464
+beds: 0.1269
+distance_to_center: -0.0977
+luxury_score: -0.0713
+total_amenities: 0.0383
+
+
+==================================================
+CIUDAD: Mallorca
+==================================================
+
+1. ESTADÍSTICAS BÁSICAS
+-------------------------
+Número de muestras: 1271
+Precio medio: 75.14
+Precio mediano: 79.00
+Precio mínimo: 18.00
+Precio máximo: 100.00
+Desviación estándar: 19.11
+
+2. MÉTRICAS DE ERROR
+-------------------------
+MAE: 11.85
+MAPE: 17.87%
+RMSE: 14.89
+R²: 0.3922
+
+3. DISTRIBUCIÓN POR TIPO DE PROPIEDAD
+-------------------------
+Entire rental unit: 511 (40.2%)
+Private room in rental unit: 229 (18.0%)
+Entire home: 139 (10.9%)
+Private room in home: 78 (6.1%)
+Entire condo: 58 (4.6%)
+Camper/RV: 26 (2.0%)
+Entire villa: 26 (2.0%)
+Room in hotel: 22 (1.7%)
+Entire cottage: 20 (1.6%)
+Entire townhouse: 18 (1.4%)
+Entire serviced apartment: 16 (1.3%)
+Private room in casa particular: 14 (1.1%)
+Entire guesthouse: 12 (0.9%)
+Private room in bed and breakfast: 9 (0.7%)
+Private room in condo: 8 (0.6%)
+Entire loft: 7 (0.6%)
+Entire vacation home: 6 (0.5%)
+Private room in hostel: 6 (0.5%)
+Entire guest suite: 5 (0.4%)
+Entire chalet: 5 (0.4%)
+Private room in townhouse: 4 (0.3%)
+Private room in villa: 4 (0.3%)
+Room in boutique hotel: 4 (0.3%)
+Private room in earthen home: 4 (0.3%)
+Tiny home: 4 (0.3%)
+Private room in chalet: 4 (0.3%)
+Private room in guesthouse: 3 (0.2%)
+Shared room in rental unit: 3 (0.2%)
+Room in aparthotel: 2 (0.2%)
+Private room in guest suite: 2 (0.2%)
+Private room in cottage: 2 (0.2%)
+Yurt: 2 (0.2%)
+Farm stay: 2 (0.2%)
+Entire place: 2 (0.2%)
+Private room: 2 (0.2%)
+Island: 2 (0.2%)
+Earthen home: 1 (0.1%)
+Entire home/apt: 1 (0.1%)
+Private room in vacation home: 1 (0.1%)
+Entire cabin: 1 (0.1%)
+Private room in island: 1 (0.1%)
+Casa particular: 1 (0.1%)
+Room in bed and breakfast: 1 (0.1%)
+Entire bungalow: 1 (0.1%)
+Private room in cabin: 1 (0.1%)
+Private room in serviced apartment: 1 (0.1%)
+Shared room in guesthouse: 0 (0.0%)
+Shared room in floor: 0 (0.0%)
+Shared room in condo: 0 (0.0%)
+Shared room in chalet: 0 (0.0%)
+Shared room in casa particular: 0 (0.0%)
+Shared room in hostel: 0 (0.0%)
+Shared room in home: 0 (0.0%)
+Shared room in bed and breakfast: 0 (0.0%)
+Shared room in hotel: 0 (0.0%)
+Shared room in loft: 0 (0.0%)
+Shared room in tent: 0 (0.0%)
+Shared room in tiny home: 0 (0.0%)
+Shared room in villa: 0 (0.0%)
+Tent: 0 (0.0%)
+Campsite: 0 (0.0%)
+Tipi: 0 (0.0%)
+Treehouse: 0 (0.0%)
+Shared room in boutique hotel: 0 (0.0%)
+Private room in cave: 0 (0.0%)
+Shared room: 0 (0.0%)
+Private room in hut: 0 (0.0%)
+Private room in boat: 0 (0.0%)
+Private room in dome: 0 (0.0%)
+Private room in farm stay: 0 (0.0%)
+Private room in floor: 0 (0.0%)
+Hut: 0 (0.0%)
+Holiday park: 0 (0.0%)
+Floor: 0 (0.0%)
+Private room in loft: 0 (0.0%)
+Room in serviced apartment: 0 (0.0%)
+Private room in minsu: 0 (0.0%)
+Private room in nature lodge: 0 (0.0%)
+Private room in tent: 0 (0.0%)
+Private room in tiny home: 0 (0.0%)
+Room in casa particular: 0 (0.0%)
+Room in hostel: 0 (0.0%)
+Dome: 0 (0.0%)
+Boat: 0 (0.0%)
+
+4. DISTRIBUCIÓN POR TIPO DE HABITACIÓN
+-------------------------
+Entire home/apt: 867 (68.2%)
+Private room: 396 (31.2%)
+Hotel room: 5 (0.4%)
+Shared room: 3 (0.2%)
+
+5. ESTADÍSTICAS DE CARACTERÍSTICAS NUMÉRICAS
+-------------------------
+accommodates:
+  Media: 3.04
+  Mediana: 2.00
+  Mín: 1.00
+  Máx: 16.00
+
+bathrooms:
+  Media: 1.20
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 17.00
+
+bedrooms:
+  Media: 1.47
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 12.00
+
+beds:
+  Media: 2.15
+  Mediana: 2.00
+  Mín: 0.00
+  Máx: 28.00
+
+distance_to_center:
+  Media: 31.26
+  Mediana: 35.04
+  Mín: 0.07
+  Máx: 72.17
+
+luxury_score:
+  Media: 0.06
+  Mediana: 0.00
+  Mín: 0.00
+  Máx: 0.40
+
+essential_score:
+  Media: 0.65
+  Mediana: 0.60
+  Mín: 0.00
+  Máx: 1.00
+
+total_amenities:
+  Media: 31.16
+  Mediana: 30.00
+  Mín: 0.00
+  Máx: 82.00
+
+6. CORRELACIONES CON EL PRECIO
+-------------------------
+accommodates: 0.3270
+distance_to_center: 0.2830
+bedrooms: 0.2622
+beds: 0.2505
+essential_score: 0.2093
+total_amenities: 0.1911
+bathrooms: 0.0910
+luxury_score: 0.0287
+
+
+==================================================
+CIUDAD: Girona
+==================================================
+
+1. ESTADÍSTICAS BÁSICAS
+-------------------------
+Número de muestras: 3677
+Precio medio: 76.86
+Precio mediano: 80.00
+Precio mínimo: 16.00
+Precio máximo: 100.00
+Desviación estándar: 17.80
+
+2. MÉTRICAS DE ERROR
+-------------------------
+MAE: 10.74
+MAPE: 15.25%
+RMSE: 13.33
+R²: 0.4393
+
+3. DISTRIBUCIÓN POR TIPO DE PROPIEDAD
+-------------------------
+Entire rental unit: 2404 (65.4%)
+Entire condo: 292 (7.9%)
+Entire home: 253 (6.9%)
+Private room in rental unit: 106 (2.9%)
+Private room in home: 78 (2.1%)
+Entire loft: 60 (1.6%)
+Private room in bed and breakfast: 47 (1.3%)
+Entire villa: 45 (1.2%)
+Private room in cottage: 36 (1.0%)
+Room in hotel: 31 (0.8%)
+Entire vacation home: 30 (0.8%)
+Entire townhouse: 29 (0.8%)
+Entire serviced apartment: 24 (0.7%)
+Entire guesthouse: 22 (0.6%)
+Private room in casa particular: 16 (0.4%)
+Entire guest suite: 16 (0.4%)
+Private room in townhouse: 16 (0.4%)
+Private room in condo: 13 (0.4%)
+Private room in guest suite: 11 (0.3%)
+Entire cottage: 11 (0.3%)
+Private room in villa: 11 (0.3%)
+Private room in tent: 10 (0.3%)
+Tiny home: 8 (0.2%)
+Private room in hostel: 8 (0.2%)
+Private room in chalet: 8 (0.2%)
+Camper/RV: 8 (0.2%)
+Entire cabin: 8 (0.2%)
+Private room in guesthouse: 7 (0.2%)
+Tipi: 7 (0.2%)
+Entire bungalow: 6 (0.2%)
+Private room in farm stay: 5 (0.1%)
+Room in aparthotel: 5 (0.1%)
+Room in boutique hotel: 5 (0.1%)
+Farm stay: 5 (0.1%)
+Entire chalet: 5 (0.1%)
+Shared room in home: 4 (0.1%)
+Tent: 4 (0.1%)
+Private room in loft: 2 (0.1%)
+Entire place: 2 (0.1%)
+Private room in serviced apartment: 2 (0.1%)
+Shared room in hostel: 2 (0.1%)
+Private room in nature lodge: 1 (0.0%)
+Room in bed and breakfast: 1 (0.0%)
+Campsite: 1 (0.0%)
+Casa particular: 1 (0.0%)
+Treehouse: 1 (0.0%)
+Private room in tiny home: 1 (0.0%)
+Earthen home: 1 (0.0%)
+Room in serviced apartment: 1 (0.0%)
+Private room in hut: 1 (0.0%)
+Holiday park: 1 (0.0%)
+Hut: 1 (0.0%)
+Private room: 1 (0.0%)
+Private room in earthen home: 1 (0.0%)
+Shared room in rental unit: 1 (0.0%)
+Shared room in villa: 1 (0.0%)
+Shared room in condo: 0 (0.0%)
+Shared room in floor: 0 (0.0%)
+Shared room in guesthouse: 0 (0.0%)
+Shared room in tent: 0 (0.0%)
+Shared room in hotel: 0 (0.0%)
+Shared room in loft: 0 (0.0%)
+Shared room in casa particular: 0 (0.0%)
+Shared room in tiny home: 0 (0.0%)
+Shared room in chalet: 0 (0.0%)
+Boat: 0 (0.0%)
+Shared room in boutique hotel: 0 (0.0%)
+Shared room in bed and breakfast: 0 (0.0%)
+Dome: 0 (0.0%)
+Entire home/apt: 0 (0.0%)
+Floor: 0 (0.0%)
+Island: 0 (0.0%)
+Private room in boat: 0 (0.0%)
+Private room in cabin: 0 (0.0%)
+Private room in cave: 0 (0.0%)
+Private room in dome: 0 (0.0%)
+Private room in floor: 0 (0.0%)
+Private room in island: 0 (0.0%)
+Private room in minsu: 0 (0.0%)
+Private room in vacation home: 0 (0.0%)
+Room in casa particular: 0 (0.0%)
+Room in hostel: 0 (0.0%)
+Shared room: 0 (0.0%)
+Yurt: 0 (0.0%)
+
+4. DISTRIBUCIÓN POR TIPO DE HABITACIÓN
+-------------------------
+Entire home/apt: 3246 (88.3%)
+Private room: 419 (11.4%)
+Shared room: 8 (0.2%)
+Hotel room: 4 (0.1%)
+
+5. ESTADÍSTICAS DE CARACTERÍSTICAS NUMÉRICAS
+-------------------------
+accommodates:
+  Media: 4.02
+  Mediana: 4.00
+  Mín: 1.00
+  Máx: 16.00
+
+bathrooms:
+  Media: 1.11
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 8.00
+
+bedrooms:
+  Media: 1.57
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 7.00
+
+beds:
+  Media: 2.66
+  Mediana: 3.00
+  Mín: 0.00
+  Máx: 20.00
+
+distance_to_center:
+  Media: 34.03
+  Mediana: 31.85
+  Mín: 0.06
+  Máx: 94.55
+
+luxury_score:
+  Media: 0.09
+  Mediana: 0.00
+  Mín: 0.00
+  Máx: 0.60
+
+essential_score:
+  Media: 0.60
+  Mediana: 0.60
+  Mín: 0.00
+  Máx: 1.00
+
+total_amenities:
+  Media: 28.45
+  Mediana: 26.00
+  Mín: 1.00
+  Máx: 80.00
+
+6. CORRELACIONES CON EL PRECIO
+-------------------------
+accommodates: 0.2327
+bedrooms: 0.2323
+beds: 0.1538
+distance_to_center: 0.1145
+essential_score: 0.0768
+bathrooms: 0.0622
+total_amenities: 0.0170
+luxury_score: -0.0015
+
+
+==================================================
+CIUDAD: Euskadi
+==================================================
+
+1. ESTADÍSTICAS BÁSICAS
+-------------------------
+Número de muestras: 1207
+Precio medio: 70.47
+Precio mediano: 75.00
+Precio mínimo: 16.00
+Precio máximo: 100.00
+Desviación estándar: 22.14
+
+2. MÉTRICAS DE ERROR
+-------------------------
+MAE: 9.82
+MAPE: 15.61%
+RMSE: 12.71
+R²: 0.6700
+
+3. DISTRIBUCIÓN POR TIPO DE PROPIEDAD
+-------------------------
+Entire rental unit: 424 (35.1%)
+Private room in rental unit: 338 (28.0%)
+Private room in home: 99 (8.2%)
+Private room in bed and breakfast: 40 (3.3%)
+Private room in hostel: 30 (2.5%)
+Entire home: 30 (2.5%)
+Private room in cottage: 26 (2.2%)
+Private room in casa particular: 20 (1.7%)
+Entire loft: 20 (1.7%)
+Entire condo: 16 (1.3%)
+Private room in condo: 15 (1.2%)
+Room in hotel: 13 (1.1%)
+Shared room in hostel: 13 (1.1%)
+Private room in guesthouse: 12 (1.0%)
+Room in boutique hotel: 10 (0.8%)
+Entire cottage: 10 (0.8%)
+Private room in chalet: 8 (0.7%)
+Entire guest suite: 8 (0.7%)
+Private room in villa: 8 (0.7%)
+Private room in townhouse: 8 (0.7%)
+Entire serviced apartment: 6 (0.5%)
+Entire guesthouse: 5 (0.4%)
+Tiny home: 5 (0.4%)
+Casa particular: 5 (0.4%)
+Shared room in bed and breakfast: 5 (0.4%)
+Entire cabin: 4 (0.3%)
+Room in bed and breakfast: 4 (0.3%)
+Camper/RV: 4 (0.3%)
+Private room in earthen home: 3 (0.2%)
+Room in hostel: 2 (0.2%)
+Private room: 2 (0.2%)
+Private room in loft: 2 (0.2%)
+Shared room in boutique hotel: 2 (0.2%)
+Private room in vacation home: 2 (0.2%)
+Private room in tent: 1 (0.1%)
+Private room in hut: 1 (0.1%)
+Shared room in tent: 1 (0.1%)
+Private room in tiny home: 1 (0.1%)
+Boat: 1 (0.1%)
+Entire townhouse: 1 (0.1%)
+Entire vacation home: 1 (0.1%)
+Entire villa: 1 (0.1%)
+Private room in floor: 0 (0.0%)
+Shared room: 0 (0.0%)
+Entire bungalow: 0 (0.0%)
+Shared room in casa particular: 0 (0.0%)
+Shared room in chalet: 0 (0.0%)
+Shared room in condo: 0 (0.0%)
+Shared room in floor: 0 (0.0%)
+Shared room in guesthouse: 0 (0.0%)
+Shared room in home: 0 (0.0%)
+Earthen home: 0 (0.0%)
+Shared room in hotel: 0 (0.0%)
+Shared room in loft: 0 (0.0%)
+Shared room in rental unit: 0 (0.0%)
+Dome: 0 (0.0%)
+Shared room in tiny home: 0 (0.0%)
+Shared room in villa: 0 (0.0%)
+Tent: 0 (0.0%)
+Campsite: 0 (0.0%)
+Tipi: 0 (0.0%)
+Treehouse: 0 (0.0%)
+Entire chalet: 0 (0.0%)
+Entire home/apt: 0 (0.0%)
+Room in serviced apartment: 0 (0.0%)
+Private room in guest suite: 0 (0.0%)
+Private room in farm stay: 0 (0.0%)
+Private room in dome: 0 (0.0%)
+Private room in cave: 0 (0.0%)
+Private room in cabin: 0 (0.0%)
+Private room in island: 0 (0.0%)
+Private room in boat: 0 (0.0%)
+Private room in minsu: 0 (0.0%)
+Private room in nature lodge: 0 (0.0%)
+Island: 0 (0.0%)
+Private room in serviced apartment: 0 (0.0%)
+Hut: 0 (0.0%)
+Holiday park: 0 (0.0%)
+Floor: 0 (0.0%)
+Farm stay: 0 (0.0%)
+Room in aparthotel: 0 (0.0%)
+Room in casa particular: 0 (0.0%)
+Entire place: 0 (0.0%)
+Yurt: 0 (0.0%)
+
+4. DISTRIBUCIÓN POR TIPO DE HABITACIÓN
+-------------------------
+Private room: 636 (52.7%)
+Entire home/apt: 541 (44.8%)
+Shared room: 21 (1.7%)
+Hotel room: 9 (0.7%)
+
+5. ESTADÍSTICAS DE CARACTERÍSTICAS NUMÉRICAS
+-------------------------
+accommodates:
+  Media: 2.71
+  Mediana: 2.00
+  Mín: 1.00
+  Máx: 15.00
+
+bathrooms:
+  Media: 1.16
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 7.00
+
+bedrooms:
+  Media: 1.39
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 6.00
+
+beds:
+  Media: 1.90
+  Mediana: 1.00
+  Mín: 0.00
+  Máx: 15.00
+
+distance_to_center:
+  Media: 32.67
+  Mediana: 23.64
+  Mín: 0.19
+  Máx: 94.19
+
+luxury_score:
+  Media: 0.07
+  Mediana: 0.00
+  Mín: 0.00
+  Máx: 0.40
+
+essential_score:
+  Media: 0.54
+  Mediana: 0.60
+  Mín: 0.00
+  Máx: 1.00
+
+total_amenities:
+  Media: 27.05
+  Mediana: 26.00
+  Mín: 0.00
+  Máx: 80.00
+
+6. CORRELACIONES CON EL PRECIO
+-------------------------
+accommodates: 0.4187
+beds: 0.3099
+bedrooms: 0.2995
+total_amenities: 0.2526
+distance_to_center: 0.1168
+essential_score: 0.0798
+bathrooms: -0.0646
+luxury_score: -0.0272

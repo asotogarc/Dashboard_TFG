@@ -1,0 +1,16 @@
+ANÁLISIS DE ERRORES POR CIUDAD
+===========================
+
+Métricas de error por ciudad:
+
+Ciudad          MAE        MAPE (%)   R²        
+---------------------------------------------
+Madrid          11.22      20.96      0.5917    
+Barcelona       12.83      24.54      0.4625    
+Sevilla         11.08      16.42      0.5064    
+Valencia        9.37       16.62      0.7320    
+Málaga          9.84       15.20      0.6715    
+Menorca         10.98      15.68      0.2723    
+Mallorca        11.85      17.87      0.3922    
+Girona          10.74      15.25      0.4393    
+Euskadi         9.82       15.61      0.6700    
