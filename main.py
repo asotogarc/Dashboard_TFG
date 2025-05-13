@@ -10,6 +10,13 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Ocultar el pie de página "Made with Streamlit"
+st.markdown("""
+    <style>
+    footer {visibility: hidden;}
+    </style>
+    """, unsafe_allow_html=True)
+
 # Título principal
 st.title("Análisis de Datos de Airbnb en España 2024")
 
@@ -48,7 +55,6 @@ except Exception as e:
 
 # Limpiar datos de vecindarios
 if "neighbourhood_cleansed" in data.columns:
-    # Convertir a string y eliminar NaN
     data["neighbourhood_cleansed"] = data["neighbourhood_cleansed"].astype(str).replace("nan", None)
     neighborhoods_options = [n for n in data["neighbourhood_cleansed"].unique() if n is not None]
 else:
@@ -61,6 +67,14 @@ neighborhoods = st.sidebar.multiselect(
     "Seleccionar vecindarios",
     options=neighborhoods_options,
     default=neighborhoods_options  # Todos los vecindarios válidos por defecto
+)
+
+# Filtro para room_type
+room_type_options = data["room_type"].unique()
+room_types = st.sidebar.multiselect(
+    "Seleccionar tipos de habitación",
+    options=room_type_options,
+    default=room_type_options  # Todos los tipos por defecto
 )
 
 # Manejar rango de precios
@@ -77,14 +91,15 @@ price_range = st.sidebar.slider(
 filtered_data = data[
     (data["neighbourhood_cleansed"].isin(neighborhoods)) &
     (data["price"] >= price_range[0]) &
-    (data["price"] <= price_range[1])
+    (data["price"] <= price_range[1]) &
+    (data["room_type"].isin(room_types))
 ]
 
 # Sección de visualizaciones interactivas
 st.header(f"Visualizaciones para {ciudad_seleccionada}")
 option = st.selectbox(
     "Selecciona el tipo de visualización:",
-    ["Mapa", "Precios por Vecindario", "Precio vs. Puntuación", "Distribución de Precios"]
+    ["Mapa", "Precios por Vecindario", "Cantidad por Tipo de Habitación", "Distribución de Precios"]
 )
 
 if option == "Mapa":
@@ -94,7 +109,7 @@ if option == "Mapa":
         lon="longitude",
         color="price",
         size="number_of_reviews",
-        hover_name="neighbourhood_cleansed",  # Corregido: Usamos una columna existente
+        hover_name="neighbourhood_cleansed",
         zoom=10,
         title="Distribución Geográfica de Alojamientos",
         color_continuous_scale=px.colors.sequential.Plasma
@@ -114,17 +129,33 @@ elif option == "Precios por Vecindario":
     )
     st.plotly_chart(fig, use_container_width=True)
 
-elif option == "Precio vs. Puntuación":
-    fig = px.scatter(
-        filtered_data,
-        x="review_scores_rating",
-        y="price",
+elif option == "Cantidad por Tipo de Habitación":
+    room_type_counts = filtered_data["room_type"].value_counts().reset_index()
+    room_type_counts.columns = ["room_type", "count"]
+    fig = px.bar(
+        room_type_counts,
+        x="room_type",
+        y="count",
+        title="Cantidad de Alojamientos por Tipo de Habitación",
         color="room_type",
-        title="Precio vs. Puntuación por Tipo de Habitación",
-        hover_data=["neighbourhood_cleansed"],
         color_discrete_sequence=px.colors.qualitative.Set2
     )
     st.plotly_chart(fig, use_container_width=True)
+    
+    # Estadísticas descriptivas
+    if not filtered_data.empty:
+        st.subheader("Estadísticas Descriptivas por Tipo de Habitación")
+        for room_type in room_types:
+            room_data = filtered_data[filtered_data["room_type"] == room_type]
+            if not room_data.empty:
+                st.write(f"**{room_type}**")
+                st.write(f"- Número de alojamientos: {len(room_data)}")
+                st.write(f"- Precio promedio: €{room_data['price'].mean():.2f}")
+                st.write(f"- Puntuación promedio: {room_data['review_scores_rating'].mean():.2f}")
+            else:
+                st.write(f"No hay datos para {room_type}")
+    else:
+        st.write("No hay datos para mostrar.")
 
 elif option == "Distribución de Precios":
     fig = px.histogram(
@@ -146,6 +177,6 @@ with col2:
 with col3:
     st.metric("Puntuación Promedio", f"{filtered_data['review_scores_rating'].mean():.2f}")
 
-# Pie de página
+# Pie de página personalizado
 st.markdown("---")
 st.markdown("TFG - Análisis Predictivo de Precios y Segmentación de Usuarios en Airbnb | Ángel Soto García")
