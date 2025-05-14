@@ -9,7 +9,7 @@ import requests
 import numpy as np
 import joblib
 from io import BytesIO
-
+import sklearn
 # Configuración de la página (sin cambios)
 st.set_page_config(
     page_title="Análisis Predictivo de Precios y Reseñas en Airbnb",
