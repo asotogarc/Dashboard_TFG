@@ -439,7 +439,7 @@ elif option == "Predicción de Precios":
     @st.cache_resource
     def load_model():
         try:
-            model_url = "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/modelado/PREDICT_RENT_BEST_MODEL.pk"
+            model_url = "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/modelado/PREDICT_RENT_BEST_MODEL.pkl"
             response = requests.get(model_url)
             response.raise_for_status()  # Comprobar si hay errores
             return joblib.load(BytesIO(response.content))
