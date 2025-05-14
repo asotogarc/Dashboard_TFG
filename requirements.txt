@@ -7,4 +7,4 @@ joblib==1.2.0
 requests==2.31.0
 lightgbm==4.1.0
 scikit-learn==1.2.2
-setuptools==68.2.
+setuptools==68.2.2
