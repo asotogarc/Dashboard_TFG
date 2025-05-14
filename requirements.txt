@@ -1,13 +1,24 @@
-streamlit==1.38.0
-pandas==2.1.1
-numpy==1.26.0
-matplotlib==3.8.0
-plotly==5.17.0
-joblib==1.2.0
-requests==2.31.0
-lightgbm==4.1.0
-setuptools==68.2.2
-rich==14.0.0
-markdown-it-py==3.0.0
-mdurl==0.1.2
-pygments==2.19.1
+# Dependencias principales
+streamlit==1.38.0  # Versión estable compatible con rich==14.0.0
+pandas==2.1.1      # Para manipulación de datos
+numpy==1.26.0      # Requerido por pandas y otras bibliotecas
+
+# Bibliotecas de visualización
+matplotlib==3.8.0  # Para gráficos estáticos
+plotly==5.17.0     # Para gráficos interactivos
+
+# Procesamiento y machine learning
+joblib==1.2.0      # Para procesamiento paralelo
+lightgbm==4.1.0    # Modelo eficiente para datos grandes
+
+# Utilidades
+requests==2.31.0   # Para peticiones HTTP
+
+# Formato y texto enriquecido
+rich==14.0.0       # Para salida en consola, compatible con streamlit
+markdown-it-py==3.0.0  # Dependencia de rich
+mdurl==0.1.2       # Dependencia de markdown-it-py
+pygments==2.19.1   # Resaltado de sintaxis para rich
+
+# Herramientas de construcción
+setuptools==68.2.2  # Necesario para instalación de paquetes
