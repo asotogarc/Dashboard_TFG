@@ -299,7 +299,7 @@ if option == "Mapa":
     fig.update_layout(mapbox_style="open-street-map")
     st.plotly_chart(fig, use_container_width=True)
 
-st.markdown("
+st.markdown("""
 1. property_type: 78926.31 (Normalizado: 28.96%)
 2. room_type: 34114.39 (Normalizado: 12.52%)
 3. accommodates: 18599.50 (Normalizado: 6.83%)
@@ -332,7 +332,7 @@ st.markdown("
 30. bedrooms_squared: 412.67 (Normalizado: 0.15%)
 31. bathrooms_squared: 266.47 (Normalizado: 0.10%)
 32. beds_squared: 130.00 (Normalizado: 0.05%)
-")
+""")
 
 elif option == "Precios por Vecindario":
     bar_data = filtered_data.groupby("neighbourhood_cleansed")["price"].mean().reset_index()
