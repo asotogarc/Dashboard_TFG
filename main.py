@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -9,29 +8,23 @@ import requests
 import numpy as np
 import joblib
 from io import BytesIO
-import sklearn
-# Configuración de la página (sin cambios)
+import sklearn# Configuración de la página (sin cambios)
 st.set_page_config(
     page_title="Análisis Predictivo de Precios y Reseñas en Airbnb",
-    page_icon="🏠",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
-)
-
-# Ocultar el pie de página (sin cambios)
+)# Ocultar el pie de página (sin cambios)
 st.markdown("""
     <style>
     footer {visibility: hidden;}
     </style>
-    """, unsafe_allow_html=True)
-
-# Título e introducción (sin cambios)
+    """, unsafe_allow_html=True)# Título e introducción (sin cambios)
 st.title("Análisis de Datos de Airbnb en España 2024")
 st.markdown("""
 Bienvenido al dashboard interactivo para el análisis de datos de Airbnb en diferentes ciudades de España (2024).  
-Este proyecto, parte de mi TFG, explora:  
-- **Predicción de precios** mediante modelos de aprendizaje automático.  
-- **Análisis de reseñas** usando procesamiento de lenguaje natural.  
+Este proyecto, parte de mi TFG, explora:  **Predicción de precios** mediante modelos de aprendizaje automático.  
+**Análisis de reseñas** usando procesamiento de lenguaje natural.  
 Autor: Ángel Soto García - Grado en Ciencia de Datos - UOC
 """)
 
@@ -46,33 +39,21 @@ ciudades_urls = {
     "Málaga": "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/datasets/inmuebles_málaga.parquet",
     "Sevilla": "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/datasets/inmuebles_sevilla.parquet",
     "Valencia": "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/datasets/inmuebles_valencia.parquet"
-}
-
-# Sidebar para selección de ciudad y filtros (sin cambios)
+}# Sidebar para selección de ciudad y filtros (sin cambios)
 st.sidebar.header("Selección de Ciudad")
-ciudad_seleccionada = st.sidebar.selectbox("Selecciona una ciudad:", list(ciudades_urls.keys()))
-
-try:
+ciudad_seleccionada = st.sidebar.selectbox("Selecciona una ciudad:", list(ciudades_urls.keys()))try:
     data = pd.read_parquet(ciudades_urls[ciudad_seleccionada])
 except Exception as e:
     st.error(f"Error al cargar los datos de {ciudad_seleccionada}: {e}")
-    st.stop()
-
-# Limpiar datos de vecindarios y room_type (sin cambios)
+    st.stop()# Limpiar datos de vecindarios y room_type (sin cambios)
 if "neighbourhood_cleansed" in data.columns:
     data["neighbourhood_cleansed"] = data["neighbourhood_cleansed"].astype(str).replace("nan", None)
     neighborhoods_options = [n for n in data["neighbourhood_cleansed"].unique() if n is not None]
 else:
     st.error("La columna 'neighbourhood_cleansed' no está presente en los datos.")
-    st.stop()
-
-if "room_type" not in data.columns:
+    st.stop()if "room_type" not in data.columns:
     st.error("La columna 'room_type' no está presente en los datos.")
-    st.stop()
-
-room_type_options = [str(room) for room in data["room_type"].unique() if pd.notna(room) and room is not None]
-
-st.sidebar.header("Filtros")
+    st.stop()room_type_options = [str(room) for room in data["room_type"].unique() if pd.notna(room) and room is not None]st.sidebar.header("Filtros")
 neighborhoods = st.sidebar.multiselect(
     "Seleccionar vecindarios",
     options=neighborhoods_options,
@@ -102,9 +83,7 @@ min_nights_range = st.sidebar.slider(
     min_value=int(data["minimum_nights"].min()),
     max_value=int(data["minimum_nights"].max()),
     value=(int(data["minimum_nights"].min()), int(data["minimum_nights"].max()))
-)
-
-# Filtrar datos (sin cambios)
+)# Filtrar datos (sin cambios)
 filtered_data = data[
     (data["neighbourhood_cleansed"].isin(neighborhoods)) &
     (data["price"] >= price_range[0]) &
@@ -113,9 +92,7 @@ filtered_data = data[
     (data["number_of_reviews"] >= min_reviews) &
     (data["minimum_nights"] >= min_nights_range[0]) &
     (data["minimum_nights"] <= min_nights_range[1])
-]
-
-# Procesar variables (sin cambios)
+]# Procesar variables (sin cambios)
 filtered_data["host_since"] = pd.to_datetime(filtered_data["host_since"])
 filtered_data["host_age_years"] = (datetime.now() - filtered_data["host_since"]).dt.days / 365
 filtered_data["occupancy_rate"] = (365 - filtered_data["availability_365"]) / 365
@@ -126,9 +103,7 @@ if "amenities" in filtered_data.columns:
     all_amenities = [amenity for sublist in filtered_data["amenities"] for amenity in sublist]
     common_amenities = [item[0] for item in Counter(all_amenities).most_common(10)]
     for amenity in common_amenities:
-        filtered_data[f"has_{amenity}"] = filtered_data["amenities"].apply(lambda x: amenity in x)
-
-# Sección de visualizaciones interactivas
+        filtered_data[f"has_{amenity}"] = filtered_data["amenities"].apply(lambda x: amenity in x)# Sección de visualizaciones interactivas
 st.header(f"Visualizaciones para {ciudad_seleccionada}")
 option = st.selectbox(
     "Selecciona el tipo de visualización:",
@@ -154,16 +129,12 @@ option = st.selectbox(
         "Análisis de Clusters",
         "Predicción de Precios"
     ]
-)
-
-# Datos para la sección de clusters (hard-coded según lo proporcionado)
+)# Datos para la sección de clusters (hard-coded según lo proporcionado)
 data_dia_semana = pd.DataFrame({
     "Día": ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"],
     "vader_compound": [0.776859, 0.783723, 0.776271, 0.773506, 0.775032, 0.776225, 0.764861],
     "num_reseñas": [7200, 7500, 7300, 7100, 7400, 7600, 6900]  # Valores estimados
-})
-
-data_clusters = pd.DataFrame({
+})data_clusters = pd.DataFrame({
     "cluster": [0, 1, 2],
     "count": [7130.0, 3837.0, 39033.0],
     "mean": [0.853238, 0.720461, 0.765594],
@@ -173,9 +144,7 @@ data_clusters = pd.DataFrame({
     "50%": [0.8977, 0.7783, 0.8885],
     "75%": [0.9460, 0.8885, 0.9524],
     "max": [0.9970, 0.9948, 0.9986]
-})
-
-# Corregido: Aseguramos que year_month y vader_compound tengan la misma longitud (164 elementos)
+})# Corregido: Aseguramos que year_month y vader_compound tengan la misma longitud (164 elementos)
 data_mensual = pd.DataFrame({
     "year_month": [
         "2011-01", "2011-04", "2011-05", "2011-06", "2011-07", "2011-08", "2011-09", "2011-11", "2011-12",
@@ -242,9 +211,7 @@ data_mensual = pd.DataFrame({
         0.742275, 0.738527, 0.761762, 0.769454, 0.762163, 0.760203, 0.744064, 0.728979, 0.681660,
         0.440333, 0.698543
     ]
-})
-
-# Resto del código (sin cambios)
+})# Resto del código (sin cambios)
 resumen_general = {
     "total_reseñas": 50000,
     "total_usuarios": 49812,
@@ -252,9 +219,7 @@ resumen_general = {
     "promedio_sentimiento": 0.7746285680000001,
     "sentimiento_min": -0.9835,
     "sentimiento_max": 0.9986
-}
-
-clusters = {
+}clusters = {
     "cluster_0": {
         "num_reseñas": 7130,
         "porcentaje": 14.26,
@@ -273,17 +238,13 @@ clusters = {
         "sentimiento_promedio": 0.7655939512720007,
         "palabras_clave": ["apartment", "stay", "place", "nice", "location", "clean", "recommend", "great", "perfect", "host"]
     }
-}
-
-temas_principales = {
+}temas_principales = {
     "Tema_1": "0.028*\"check\" + 0.021*\"help\" + 0.020*\"give\" + 0.017*\"time\" + 0.015*\"arrive\" + 0.012*\"leave\" + 0.011*\"arrival\" + 0.011*\"not\" + 0.011*\"question\" + 0.010*\"early\"",
     "Tema_2": "0.030*\"room\" + 0.018*\"not\" + 0.016*\"bed\" + 0.016*\"bathroom\" + 0.016*\"small\" + 0.013*\"kitchen\" + 0.013*\"night\" + 0.011*\"work\" + 0.010*\"shower\" + 0.010*\"bedroom\"",
     "Tema_3": "0.074*\"accommodation\" + 0.051*\"pleasant\" + 0.028*\"welcome\" + 0.025*\"locate\" + 0.016*\"description\" + 0.014*\"foot\" + 0.012*\"functional\" + 0.011*\"photo\" + 0.011*\"available\" + 0.011*\"practical\"",
     "Tema_4": "0.040*\"apartment\" + 0.038*\"great\" + 0.037*\"stay\" + 0.036*\"location\" + 0.027*\"place\" + 0.027*\"good\" + 0.025*\"clean\" + 0.020*\"recommend\" + 0.019*\"nice\" + 0.017*\"host\"",
     "Tema_5": "0.064*\"house\" + 0.034*\"attentive\" + 0.033*\"hostel\" + 0.020*\"attention\" + 0.018*\"department\" + 0.014*\"floor\" + 0.012*\"position\" + 0.011*\"doubt\" + 0.011*\"meter\" + 0.010*\"wide\""
-}
-
-# Visualizaciones
+}# Visualizaciones
 if option == "Mapa":
     fig = px.scatter_mapbox(
         filtered_data,
@@ -297,11 +258,7 @@ if option == "Mapa":
         color_continuous_scale=px.colors.sequential.Plasma
     )
     fig.update_layout(mapbox_style="open-street-map")
-    st.plotly_chart(fig, use_container_width=True)
-
-
-
-elif option == "Precios por Vecindario":
+    st.plotly_chart(fig, use_container_width=True)elif option == "Precios por Vecindario":
     bar_data = filtered_data.groupby("neighbourhood_cleansed")["price"].mean().reset_index()
     fig = px.bar(
         bar_data,
@@ -311,9 +268,7 @@ elif option == "Precios por Vecindario":
         color="price",
         color_continuous_scale=px.colors.sequential.Viridis
     )
-    st.plotly_chart(fig, use_container_width=True)
-
-# ... (Otras visualizaciones existentes sin cambios)
+    st.plotly_chart(fig, use_container_width=True)# ... (Otras visualizaciones existentes sin cambios)
 
 elif option == "Análisis de Clusters":
     st.subheader("Análisis de Clusters Identificados")
@@ -321,114 +276,115 @@ elif option == "Análisis de Clusters":
     Esta sección presenta un análisis detallado de los clusters de reseñas identificados, incluyendo la actividad, el sentimiento promedio por día de la semana, la distribución de sentimientos por cluster y la evolución temporal del sentimiento.
     """)
 
-    # Resumen General
-    st.markdown("### Resumen General")
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.metric("Total de Reseñas", resumen_general["total_reseñas"])
-    with col2:
-        st.metric("Total de Usuarios", resumen_general["total_usuarios"])
-    with col3:
-        st.metric("Promedio de Sentimiento", f"{resumen_general['promedio_sentimiento']:.3f}")
-    st.markdown(f"**Período de Análisis**: {resumen_general['periodo']['inicio']} - {resumen_general['periodo']['fin']}")
-    st.markdown(f"**Rango de Sentimiento**: {resumen_general['sentimiento_min']:.4f} a {resumen_general['sentimiento_max']:.4f}")
+# Resumen General
+st.markdown("### Resumen General")
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.metric("Total de Reseñas", resumen_general["total_reseñas"])
+with col2:
+    st.metric("Total de Usuarios", resumen_general["total_usuarios"])
+with col3:
+    st.metric("Promedio de Sentimiento", f"{resumen_general['promedio_sentimiento']:.3f}")
+st.markdown(f"**Período de Análisis**: {resumen_general['periodo']['inicio']} - {resumen_general['periodo']['fin']}")
+st.markdown(f"**Rango de Sentimiento**: {resumen_general['sentimiento_min']:.4f} a {resumen_general['sentimiento_max']:.4f}")
 
-    # Información de Clusters
-    st.markdown("### Detalles de los Clusters")
-    for cluster, info in clusters.items():
-        st.markdown(f"**{cluster.replace('_', ' ').title()}**")
-        st.markdown(f"- **Número de Reseñas**: {info['num_reseñas']} ({info['porcentaje']:.2f}%)")
-        st.markdown(f"- **Sentimiento Promedio**: {info['sentimiento_promedio']:.3f}")
-        st.markdown(f"- **Palabras Clave**: {', '.join(info['palabras_clave'])}")
+# Información de Clusters
+st.markdown("### Detalles de los Clusters")
+for cluster, info in clusters.items():
+    st.markdown(f"**{cluster.replace('_', ' ').title()}**")
+    st.markdown(f"- **Número de Reseñas**: {info['num_reseñas']} ({info['porcentaje']:.2f}%)")
+    st.markdown(f"- **Sentimiento Promedio**: {info['sentimiento_promedio']:.3f}")
+    st.markdown(f"- **Palabras Clave**: {', '.join(info['palabras_clave'])}")
 
-    # Temas Principales
-    st.markdown("### Temas Principales Identificados")
-    for tema, descripcion in temas_principales.items():
-        st.markdown(f"**{tema}**: {descripcion}")
+# Temas Principales
+st.markdown("### Temas Principales Identificados")
+for tema, descripcion in temas_principales.items():
+    st.markdown(f"**{tema}**: {descripcion}")
 
-    # Gráfico 1: Actividad y Sentimiento por Día de la Semana
-    st.markdown("### Actividad y Sentimiento por Día de la Semana")
-    st.markdown("""
-    **Descripción**: Gráfico combinado que muestra la actividad y el sentimiento promedio de las reseñas por día de la semana. Las barras indican el número de reseñas, mientras que la línea roja muestra el sentimiento promedio (calculado con VADER).  
-    **Información Adicional**:  
-    - Período de análisis: Semanal (por día)  
-    - Método de análisis de sentimiento: VADER
-    """)
-    fig1 = go.Figure()
-    fig1.add_trace(
-        go.Bar(
-            x=data_dia_semana["Día"],
-            y=data_dia_semana["num_reseñas"],
-            name="Número de Reseñas",
-            marker_color="skyblue"
+# Gráfico 1: Actividad y Sentimiento por Día de la Semana
+st.markdown("### Actividad y Sentimiento por Día de la Semana")
+st.markdown("""
+**Descripción**: Gráfico combinado que muestra la actividad y el sentimiento promedio de las reseñas por día de la semana. Las barras indican el número de reseñas, mientras que la línea roja muestra el sentimiento promedio (calculado con VADER).  
+**Información Adicional**:  
+- Período de análisis: Semanal (por día)  
+- Método de análisis de sentimiento: VADER
+""")
+fig1 = go.Figure()
+fig1.add_trace(
+    go.Bar(
+        x=data_dia_semana["Día"],
+        y=data_dia_semana["num_reseñas"],
+        name="Número de Reseñas",
+        marker_color="skyblue"
+    )
+)
+fig1.add_trace(
+    go.Scatter(
+        x=data_dia_semana["Día"],
+        y=data_dia_semana["vader_compound"],
+        name="Sentimiento Promedio",
+        line=dict(color="red", width=2),
+        yaxis="y2"
+    )
+)
+fig1.update_layout(
+    title="Actividad y Sentimiento por Día de la Semana",
+    xaxis=dict(title="Día de la Semana"),
+    yaxis=dict(title="Número de Reseñas", titlefont=dict(color="skyblue"), tickfont=dict(color="skyblue")),
+    yaxis2=dict(title="Sentimiento Promedio (VADER)", titlefont=dict(color="red"), tickfont=dict(color="red"), overlaying="y", side="right"),
+    legend=dict(x=0.01, y=0.99)
+)
+st.plotly_chart(fig1, use_container_width=True)
+
+# Gráfico 2: Distribución de Sentimiento por Cluster
+st.markdown("### Distribución de Sentimiento por Cluster")
+st.markdown("""
+**Descripción**: Diagrama de caja que muestra la distribución de las puntuaciones de sentimiento (calculadas con VADER) para cada cluster de reseñas. Permite comparar el rango y la mediana del sentimiento entre clusters.  
+**Información Adicional**:  
+- Número de clusters: 3  
+- Método de análisis de sentimiento: VADER
+""")
+fig2 = go.Figure()
+for cluster in data_clusters["cluster"]:
+    cluster_data = data_clusters[data_clusters["cluster"] == cluster]
+    fig2.add_trace(
+        go.Box(
+            y=[
+                cluster_data["min"].iloc[0],
+                cluster_data["25%"].iloc[0],
+                cluster_data["50%"].iloc[0],
+                cluster_data["75%"].iloc[0],
+                cluster_data["max"].iloc[0]
+            ],
+            name=f"Cluster {cluster}",
+            boxpoints=False
         )
     )
-    fig1.add_trace(
-        go.Scatter(
-            x=data_dia_semana["Día"],
-            y=data_dia_semana["vader_compound"],
-            name="Sentimiento Promedio",
-            line=dict(color="red", width=2),
-            yaxis="y2"
-        )
-    )
-    fig1.update_layout(
-        title="Actividad y Sentimiento por Día de la Semana",
-        xaxis=dict(title="Día de la Semana"),
-        yaxis=dict(title="Número de Reseñas", titlefont=dict(color="skyblue"), tickfont=dict(color="skyblue")),
-        yaxis2=dict(title="Sentimiento Promedio (VADER)", titlefont=dict(color="red"), tickfont=dict(color="red"), overlaying="y", side="right"),
-        legend=dict(x=0.01, y=0.99)
-    )
-    st.plotly_chart(fig1, use_container_width=True)
+fig2.update_layout(
+    title="Distribución de Sentimiento por Cluster",
+    yaxis=dict(title="Sentimiento (VADER)"),
+    xaxis=dict(title="Cluster")
+)
+st.plotly_chart(fig2, use_container_width=True)
 
-    # Gráfico 2: Distribución de Sentimiento por Cluster
-    st.markdown("### Distribución de Sentimiento por Cluster")
-    st.markdown("""
-    **Descripción**: Diagrama de caja que muestra la distribución de las puntuaciones de sentimiento (calculadas con VADER) para cada cluster de reseñas. Permite comparar el rango y la mediana del sentimiento entre clusters.  
-    **Información Adicional**:  
-    - Número de clusters: 3  
-    - Método de análisis de sentimiento: VADER
-    """)
-    fig2 = go.Figure()
-    for cluster in data_clusters["cluster"]:
-        cluster_data = data_clusters[data_clusters["cluster"] == cluster]
-        fig2.add_trace(
-            go.Box(
-                y=[
-                    cluster_data["min"].iloc[0],
-                    cluster_data["25%"].iloc[0],
-                    cluster_data["50%"].iloc[0],
-                    cluster_data["75%"].iloc[0],
-                    cluster_data["max"].iloc[0]
-                ],
-                name=f"Cluster {cluster}",
-                boxpoints=False
-            )
-        )
-    fig2.update_layout(
-        title="Distribución de Sentimiento por Cluster",
-        yaxis=dict(title="Sentimiento (VADER)"),
-        xaxis=dict(title="Cluster")
-    )
-    st.plotly_chart(fig2, use_container_width=True)
+# Gráfico 3: Evolución del Sentimiento Mensual
+st.markdown("### Evolución del Sentimiento Mensual")
+st.markdown("""
+**Descripción**: Gráfico de líneas que muestra la evolución del sentimiento promedio (calculado con VADER) de las reseñas a lo largo del tiempo, agrupado por mes.  
+**Información Adicional**:  
+- Período de análisis: Mensual  
+- Método de análisis de sentimiento: VADER
+""")
+fig3 = px.line(
+    data_mensual,
+    x="year_month",
+    y="vader_compound",
+    title="Evolución del Sentimiento Promedio Mensual",
+    labels={"year_month": "Mes", "vader_compound": "Sentimiento Promedio (VADER)"}
+)
+fig3.update_xaxes(tickangle=45)
+st.plotly_chart(fig3, use_container_width=True)
 
-    # Gráfico 3: Evolución del Sentimiento Mensual
-    st.markdown("### Evolución del Sentimiento Mensual")
-    st.markdown("""
-    **Descripción**: Gráfico de líneas que muestra la evolución del sentimiento promedio (calculado con VADER) de las reseñas a lo largo del tiempo, agrupado por mes.  
-    **Información Adicional**:  
-    - Período de análisis: Mensual  
-    - Método de análisis de sentimiento: VADER
-    """)
-    fig3 = px.line(
-        data_mensual,
-        x="year_month",
-        y="vader_compound",
-        title="Evolución del Sentimiento Promedio Mensual",
-        labels={"year_month": "Mes", "vader_compound": "Sentimiento Promedio (VADER)"}
-    )
-    fig3.update_xaxes(tickangle=45)
-    st.plotly_chart(fig3, use_container_width=True)
 # Métricas resumidas (sin cambios)
 
 
@@ -443,8 +399,7 @@ with col3:
 with col4:
     st.metric("Tasa de Ocupación Promedio", f"{filtered_data['occupancy_rate'].mean():.2%}")
 with col5:
-    st.metric("Antigüedad Promedio del Host (años)", f"{filtered_data['host_age_years'].mean():.2f}")
-
-# Pie de página (sin cambios)
+    st.metric("Antigüedad Promedio del Host (años)", f"{filtered_data['host_age_years'].mean():.2f}")# Pie de página (sin cambios)
 st.markdown("---")
 st.markdown("TFG - Análisis Predictivo de Precios y Segmentación de Usuarios en Airbnb | Ángel Soto García")
+
