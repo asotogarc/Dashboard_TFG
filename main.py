@@ -299,6 +299,41 @@ if option == "Mapa":
     fig.update_layout(mapbox_style="open-street-map")
     st.plotly_chart(fig, use_container_width=True)
 
+st.markdown("
+1. property_type: 78926.31 (Normalizado: 28.96%)
+2. room_type: 34114.39 (Normalizado: 12.52%)
+3. accommodates: 18599.50 (Normalizado: 6.83%)
+4. distance_to_center: 18420.12 (Normalizado: 6.76%)
+5. total_amenities: 17949.60 (Normalizado: 6.59%)
+6. scaled_log_distance: 15124.26 (Normalizado: 5.55%)
+7. minimum_nights: 13345.00 (Normalizado: 4.90%)
+8. maximum_nights: 9672.04 (Normalizado: 3.55%)
+9. neighborhood_cluster: 8574.30 (Normalizado: 3.15%)
+10. ciudad: 6455.99 (Normalizado: 2.37%)
+11. log_accommodates: 5992.53 (Normalizado: 2.20%)
+12. scaled_distance_to_center: 5727.14 (Normalizado: 2.10%)
+13. scaled_total_amenities: 5582.59 (Normalizado: 2.05%)
+14. log_distance: 5135.69 (Normalizado: 1.88%)
+15. log_minimum_nights: 4305.02 (Normalizado: 1.58%)
+16. essential_score: 4167.03 (Normalizado: 1.53%)
+17. bathroom_per_person: 2884.72 (Normalizado: 1.06%)
+18. log_maximum_nights: 2685.00 (Normalizado: 0.99%)
+19. bathrooms: 1846.04 (Normalizado: 0.68%)
+20. accommodates_squared: 1767.03 (Normalizado: 0.65%)
+21. bedrooms: 1722.41 (Normalizado: 0.63%)
+22. bed_bath_product: 1719.05 (Normalizado: 0.63%)
+23. bed_to_bedroom_ratio: 1437.47 (Normalizado: 0.53%)
+24. luxury_score: 1251.96 (Normalizado: 0.46%)
+25. person_per_bed: 1096.63 (Normalizado: 0.40%)
+26. person_per_bedroom: 1091.58 (Normalizado: 0.40%)
+27. bed_accom_ratio: 958.30 (Normalizado: 0.35%)
+28. beds: 695.56 (Normalizado: 0.26%)
+29. distance_to_center_squared: 440.89 (Normalizado: 0.16%)
+30. bedrooms_squared: 412.67 (Normalizado: 0.15%)
+31. bathrooms_squared: 266.47 (Normalizado: 0.10%)
+32. beds_squared: 130.00 (Normalizado: 0.05%)
+")
+
 elif option == "Precios por Vecindario":
     bar_data = filtered_data.groupby("neighbourhood_cleansed")["price"].mean().reset_index()
     fig = px.bar(
@@ -428,235 +463,8 @@ elif option == "Análisis de Clusters":
     fig3.update_xaxes(tickangle=45)
     st.plotly_chart(fig3, use_container_width=True)
 # Métricas resumidas (sin cambios)
-elif option == "Predicción de Precios":
-    st.subheader("Predicción de Precios con Modelo Entrenado")
-    st.markdown("""
-    Esta sección permite realizar predicciones de precios utilizando el modelo previamente entrenado.
-    Puedes ajustar los parámetros y ver cómo afectan al precio estimado de un alojamiento.
-    """)
-    
-    # Cargar el modelo
-    @st.cache_resource
-    def load_model():
-        try:
-            model_url = "https://raw.githubusercontent.com/asotogarc/TFG-UOC-CienciaDeDatos-062025/main/modelado/PREDICT_RENT_BEST_MODEL.pkl"
-            response = requests.get(model_url)
-            response.raise_for_status()  # Comprobar si hay errores
-            return joblib.load(BytesIO(response.content))
-        except Exception as e:
-            st.error(f"Error al cargar el modelo: {e}")
-            return None
-    
-    model = load_model()
-    
-    if model:
-        # Formulario para la predicción
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            property_type = st.selectbox(
-                "Tipo de Propiedad",
-                ["Apartment", "House", "Condominium", "Loft", "Villa", "Other"]
-            )
-            
-            room_type = st.selectbox(
-                "Tipo de Habitación",
-                ["Entire home/apt", "Private room", "Shared room", "Hotel room"]
-            )
-            
-            accommodates = st.slider(
-                "Capacidad (personas)",
-                min_value=1,
-                max_value=16,
-                value=2
-            )
-            
-            bathrooms = st.number_input(
-                "Número de Baños",
-                min_value=0.0,
-                max_value=10.0,
-                value=1.0,
-                step=0.5
-            )
-            
-            bedrooms = st.number_input(
-                "Número de Dormitorios",
-                min_value=0,
-                max_value=10,
-                value=1
-            )
-            
-            beds = st.number_input(
-                "Número de Camas",
-                min_value=0,
-                max_value=20,
-                value=1
-            )
-        
-        with col2:
-            minimum_nights = st.number_input(
-                "Noches Mínimas",
-                min_value=1,
-                max_value=365,
-                value=1
-            )
-            
-            maximum_nights = st.number_input(
-                "Noches Máximas",
-                min_value=1,
-                max_value=1125,
-                value=30
-            )
-            
-            distance_to_center = st.slider(
-                "Distancia al Centro (km)",
-                min_value=0.1,
-                max_value=30.0,
-                value=3.0,
-                step=0.1
-            )
-            
-            total_amenities = st.slider(
-                "Total de Comodidades",
-                min_value=1,
-                max_value=50,
-                value=20
-            )
-            
-            essential_score = st.slider(
-                "Puntuación de Esenciales",
-                min_value=0.0,
-                max_value=1.0,
-                value=0.7,
-                step=0.05
-            )
-            
-            luxury_score = st.slider(
-                "Puntuación de Lujo",
-                min_value=0.0,
-                max_value=1.0,
-                value=0.3,
-                step=0.05
-            )
-            
-            neighborhood_cluster = st.selectbox(
-                "Cluster de Vecindario",
-                [0, 1, 2, 3, 4]
-            )
-        
-        # Crear características derivadas
-        log_accommodates = np.log1p(accommodates)
-        log_distance = np.log1p(distance_to_center)
-        log_minimum_nights = np.log1p(minimum_nights)
-        log_maximum_nights = np.log1p(maximum_nights)
-        scaled_distance_to_center = distance_to_center / 10
-        scaled_log_distance = log_distance / 3
-        scaled_total_amenities = total_amenities / 30
-        accommodates_squared = accommodates ** 2
-        bathrooms_squared = bathrooms ** 2
-        bedrooms_squared = bedrooms ** 2
-        beds_squared = beds ** 2
-        distance_to_center_squared = distance_to_center ** 2
-        bathroom_per_person = bathrooms / max(accommodates, 1)
-        bed_to_bedroom_ratio = beds / max(bedrooms, 1) if bedrooms > 0 else beds
-        person_per_bed = accommodates / max(beds, 1) if beds > 0 else accommodates
-        person_per_bedroom = accommodates / max(bedrooms, 1) if bedrooms > 0 else accommodates
-        bed_accom_ratio = beds / max(accommodates, 1)
-        bed_bath_product = beds * bathrooms
-        
-        # Preparar el input para el modelo
-        input_data = pd.DataFrame({
-            'property_type': [property_type],
-            'room_type': [room_type],
-            'accommodates': [accommodates],
-            'bathrooms': [bathrooms],
-            'bedrooms': [bedrooms],
-            'beds': [beds],
-            'minimum_nights': [minimum_nights],
-            'maximum_nights': [maximum_nights],
-            'distance_to_center': [distance_to_center],
-            'total_amenities': [total_amenities],
-            'essential_score': [essential_score],
-            'luxury_score': [luxury_score],
-            'neighborhood_cluster': [neighborhood_cluster],
-            'ciudad': [ciudad_seleccionada],
-            'log_accommodates': [log_accommodates],
-            'log_distance': [log_distance],
-            'log_minimum_nights': [log_minimum_nights],
-            'log_maximum_nights': [log_maximum_nights],
-            'scaled_distance_to_center': [scaled_distance_to_center],
-            'scaled_log_distance': [scaled_log_distance],
-            'scaled_total_amenities': [scaled_total_amenities],
-            'accommodates_squared': [accommodates_squared],
-            'bathrooms_squared': [bathrooms_squared],
-            'bedrooms_squared': [bedrooms_squared],
-            'beds_squared': [beds_squared],
-            'distance_to_center_squared': [distance_to_center_squared],
-            'bathroom_per_person': [bathroom_per_person],
-            'bed_to_bedroom_ratio': [bed_to_bedroom_ratio],
-            'person_per_bed': [person_per_bed],
-            'person_per_bedroom': [person_per_bedroom],
-            'bed_accom_ratio': [bed_accom_ratio],
-            'bed_bath_product': [bed_bath_product]
-        })
-        
-        # Realizar predicción
-        if st.button("Predecir Precio"):
-            try:
-                prediction = model.predict(input_data)
-                st.success(f"El precio estimado es: €{prediction[0]:.2f} por noche")
-            except Exception as e:
-                st.error(f"Error en la predicción: {e}")
-        
-        # Importancia de características
-        st.subheader("Importancia de Características del Modelo")
-        
-        # Datos de importancia de características del modelo
-        feature_importance = pd.DataFrame({
-            'Característica': [
-                'property_type', 'room_type', 'accommodates', 'distance_to_center', 'total_amenities',
-                'scaled_log_distance', 'minimum_nights', 'maximum_nights', 'neighborhood_cluster', 'ciudad',
-                'log_accommodates', 'scaled_distance_to_center', 'scaled_total_amenities', 'log_distance',
-                'log_minimum_nights', 'essential_score', 'bathroom_per_person', 'log_maximum_nights',
-                'bathrooms', 'accommodates_squared', 'bedrooms', 'bed_bath_product', 'bed_to_bedroom_ratio',
-                'luxury_score', 'person_per_bed', 'person_per_bedroom', 'bed_accom_ratio', 'beds',
-                'distance_to_center_squared', 'bedrooms_squared', 'bathrooms_squared', 'beds_squared'
-            ],
-            'Importancia': [
-                28.96, 12.52, 6.83, 6.76, 6.59, 5.55, 4.90, 3.55, 3.15, 2.37,
-                2.20, 2.10, 2.05, 1.88, 1.58, 1.53, 1.06, 0.99, 0.68, 0.65,
-                0.63, 0.63, 0.53, 0.46, 0.40, 0.40, 0.35, 0.26, 0.16, 0.15,
-                0.10, 0.05
-            ]
-        })
-        
-        # Ordenar por importancia
-        feature_importance = feature_importance.sort_values('Importancia', ascending=False)
-        
-        # Mostrar gráfico de importancia
-        fig = px.bar(
-            feature_importance.head(15),  # Top 15 características
-            x='Importancia',
-            y='Característica',
-            orientation='h',
-            title='Top 15 Características por Importancia (%)',
-            labels={'Importancia': 'Importancia Normalizada (%)', 'Característica': 'Característica'},
-            color='Importancia',
-            color_continuous_scale=px.colors.sequential.Viridis
-        )
-        fig.update_layout(yaxis={'categoryorder': 'total ascending'})
-        st.plotly_chart(fig, use_container_width=True)
-        
-        # Tabla completa de importancia
-        with st.expander("Ver tabla completa de importancia de características"):
-            st.dataframe(feature_importance)
-        
-        st.markdown("""
-        **Nota**: La importancia de las características se mide como el porcentaje de ganancia (gain) que cada característica 
-        aporta al modelo de predicción. Características con mayor importancia tienen mayor influencia en el precio final.
-        """)
-    else:
-        st.warning("No se pudo cargar el modelo de predicción. Por favor, inténtelo de nuevo más tarde.")
+
+
 st.header("Métricas Resumidas")
 col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
